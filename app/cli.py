@@ -19,6 +19,8 @@ import sys
 from pathlib import Path
 from typing import List, Optional, Tuple
 
+from app.core.config import get_settings
+from app.models.article import Article, RankedArticle, SearchFilters
 from app.pipeline.analysis import (
     Analysis,
     ArticleSummary,
@@ -26,8 +28,6 @@ from app.pipeline.analysis import (
     article_key,
     based_on,
 )
-from app.core.config import get_settings
-from app.models.article import Article, RankedArticle, SearchFilters
 from app.pipeline.search import corpus_coverage, run_search, split_tiers
 from app.report.renderer import render_report
 

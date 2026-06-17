@@ -15,8 +15,8 @@ from typing import List, Optional
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from app.pipeline.analysis import ArticleSummary, ComparisonTable, SynthesisResult, article_key
 from app.models.article import RankedArticle
+from app.pipeline.analysis import ArticleSummary, ComparisonTable, SynthesisResult, article_key
 
 _TEMPLATE_DIR = Path(__file__).parent / "templates"
 _env = Environment(

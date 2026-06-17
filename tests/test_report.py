@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 
+from app.models.article import Article, ContentLevel, RankedArticle
 from app.pipeline.analysis import (
     ArticleSummary,
     ComparisonTable,
@@ -12,9 +13,8 @@ from app.pipeline.analysis import (
     Theme,
     article_key,
 )
-from app.models.article import Article, ContentLevel, RankedArticle
-from app.report.renderer import render_report
 from app.pipeline.tone import find_tone_violations
+from app.report.renderer import render_report
 
 
 def _summary_for(article, based_on="abstract"):
