@@ -13,7 +13,7 @@ DASHBOARD = HERE / "target_intel_dashboard.html"
 OUT_DIR = HERE / "_video_capture"
 FINAL_MP4 = HERE / "target_intel_dashboard.mp4"
 
-WIDTH, HEIGHT = 1920, 1080
+WIDTH, HEIGHT = 1440, 810
 
 # sections to traverse, top -> bottom. The video scrolls THROUGH each section
 # so every line is on-screen at some point, with a short pause between sections.
@@ -123,7 +123,6 @@ async def main():
         "-c:v", "libx264", "-preset", "medium", "-crf", "20",
         "-pix_fmt", "yuv420p",
         "-movflags", "+faststart",
-        "-vf", f"scale={WIDTH}:{HEIGHT}:flags=lanczos",
         str(FINAL_MP4),
     ]
     print(" ".join(cmd))

@@ -156,19 +156,23 @@ make_stage1_svg <- function(dt) {
     hetw <- (r$hetdel_pct / max_pct) * bar_w
     totw <- homw + hetw
     cohort <- sub("^TCGA-", "", r$cohort)
+    # Bars rendered at their final width/position so the figure is readable
+    # without JavaScript (e.g. iOS Files preview, email clients).  JS may
+    # still animate the bars in via CSS transitions, but the defaults are
+    # the real values, not zero.
     sprintf('<g class="bar-row" data-cohort="%s" data-n="%d" data-homdel="%.1f" data-hetdel="%.1f" data-total="%.1f">
       <rect class="row-hit" x="0" y="%d" width="%d" height="%d"></rect>
       <text class="cohort-label" x="%d" y="%d">%s</text>
-      <rect class="bar bar-hom" x="%d" y="%d" rx="2" ry="2" height="%d" data-target-w="%.2f" width="0"></rect>
-      <rect class="bar bar-het" x="%d" y="%d" rx="2" ry="2" height="%d" data-target-w="%.2f" width="0" data-target-x="%.2f"></rect>
-      <text class="row-pct" x="%.1f" y="%d" data-target-x="%.1f">n=%d · %.1f%% / %.1f%%</text>
+      <rect class="bar bar-hom" x="%d" y="%d" rx="2" ry="2" height="%d" width="%.2f"></rect>
+      <rect class="bar bar-het" x="%.2f" y="%d" rx="2" ry="2" height="%d" width="%.2f"></rect>
+      <text class="row-pct" x="%.1f" y="%d">n=%d · %.1f%% / %.1f%%</text>
     </g>',
       cohort, r$n_cohort, r$homdel_pct, r$hetdel_pct, r$homdel_pct + r$hetdel_pct,
       y - 2, width, row_h + 4,
       pad_left - 8, y + row_h / 2 + 4, cohort,
       pad_left, y, row_h, homw,
-      pad_left, y, row_h, hetw, pad_left + homw,
-      pad_left + 6, y + row_h / 2 + 4, pad_left + totw + 6,
+      pad_left + homw, y, row_h, hetw,
+      pad_left + totw + 6, y + row_h / 2 + 4,
       r$n_cohort, r$homdel_pct, r$hetdel_pct
     )
   }, character(1))
@@ -350,17 +354,17 @@ make_figure3_svg <- function(dt) {
       label <- sprintf('n=%d · %.1f Mb', r$n_samples, r$median_mb)
       sprintf('<g class="f3-row" data-cohort="%s" data-class="%s" data-n="%d" data-med="%.2f" data-focal="%.1f" data-inter="%.1f" data-arm="%.1f">
         <rect class="f3-hit" x="%d" y="%d" width="%d" height="%d"></rect>
-        <rect class="f3-seg f3-focal" x="%d" y="%d" rx="2" ry="2" height="%d" width="0" data-target-w="%.2f"></rect>
-        <rect class="f3-seg f3-inter" x="%d" y="%d" rx="2" ry="2" height="%d" width="0" data-target-w="%.2f" data-target-x="%.2f"></rect>
-        <rect class="f3-seg f3-arm"   x="%d" y="%d" rx="2" ry="2" height="%d" width="0" data-target-w="%.2f" data-target-x="%.2f"></rect>
+        <rect class="f3-seg f3-focal" x="%d"   y="%d" rx="2" ry="2" height="%d" width="%.2f"></rect>
+        <rect class="f3-seg f3-inter" x="%.2f" y="%d" rx="2" ry="2" height="%d" width="%.2f"></rect>
+        <rect class="f3-seg f3-arm"   x="%.2f" y="%d" rx="2" ry="2" height="%d" width="%.2f"></rect>
         <text class="f3-row-label" x="%.1f" y="%.1f">%s</text>
       </g>',
         co_short, f$class, r$n_samples, r$median_mb,
         r$pct_focal, r$pct_intermediate, r$pct_arm,
         f$x0 - 4, y - 2, facet_w + facet_label_w + 8, row_h + 4,
-        f$x0, y, row_h, fw,
-        f$x0, y, row_h, iw, f$x0 + fw,
-        f$x0, y, row_h, aw, f$x0 + fw + iw,
+        f$x0,           y, row_h, fw,
+        f$x0 + fw,      y, row_h, iw,
+        f$x0 + fw + iw, y, row_h, aw,
         f$x0 + facet_w + 6, y + row_h / 2 + 4, label
       )
     }, character(1))
@@ -733,7 +737,7 @@ make_figure6_svg <- function(dt) {
       <rect class="f6-hit" x="0" y="%d" width="%d" height="%d"></rect>
       <text class="f6-drug" x="%d" y="%.1f">%s</text>
       <text class="f6-nct"  x="%d" y="%.1f">%s</text>
-      <rect class="f6-bar" x="%.1f" y="%d" rx="3" ry="3" height="%d" fill="%s" width="0" data-target-w="%.2f"></rect>
+      <rect class="f6-bar" x="%.1f" y="%d" rx="3" ry="3" height="%d" fill="%s" width="%.2f"></rect>
       <text class="f6-marker" x="%.1f" y="%.1f">%s</text>
     </g>',
       esc(r$nct_id), esc(r$canonical_drug), esc(as.character(r$mechanism_class)),
@@ -1535,6 +1539,7 @@ html <- glue('
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0F6E56">
+<script>document.documentElement.classList.add("js");</script>
 <meta name="description" content="MTAP / PRMT5 target-intelligence dashboard — genomic landscape, mechanism, clinical landscape, and synthesis. Built from TCGA ABSOLUTE + recount3 + MC3 + ClinicalTrials.gov.">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="MTAP / PRMT5 axis: prevalence across 33 TCGA cohorts, focality of 9p21 deletions, co-deletion partners, clinical trial landscape, and synthesis. All claims cited.">
@@ -1666,9 +1671,11 @@ html <- glue('
   }}
 
   /* Figure / image sizing — keep visuals from dominating full-page view */
-  .fig-wrap {{ margin: 16px auto; max-width: 920px; padding: 0;
-                opacity: 0; transform: translateY(14px);
-                transition: opacity 0.7s ease, transform 0.7s ease; }}
+  .fig-wrap {{ margin: 16px auto; max-width: 920px; padding: 0; }}
+  /* Fade-in is JS-driven (IntersectionObserver). Without JS, content
+     must remain visible — scope the initial opacity: 0 to .js only. */
+  html.js .fig-wrap {{ opacity: 0; transform: translateY(14px);
+                        transition: opacity 0.7s ease, transform 0.7s ease; }}
   /* Full-width variant: Figure 1 + 2 take the full section width so the
      headline figures are easier to read. */
   .fig-wrap.fig-full {{ max-width: 100%; }}
@@ -1681,9 +1688,9 @@ html <- glue('
               border: 0.5px solid var(--border);
               border-radius: 8px; margin: 6px auto 6px;
               background: white; display: block;
-              box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-              opacity: 0; transform: translateY(14px);
-              transition: opacity 0.7s ease, transform 0.7s ease; }}
+              box-shadow: 0 1px 4px rgba(0,0,0,0.04); }}
+  html.js img.fig {{ opacity: 0; transform: translateY(14px);
+                      transition: opacity 0.7s ease, transform 0.7s ease; }}
   img.fig.visible {{ opacity: 1; transform: translateY(0); }}
 
   /* Shared figure SVG */
@@ -1892,8 +1899,8 @@ html <- glue('
   .stage1-svg .cohort-label  {{ font-size: 10px; fill: var(--text); font-weight: 600;
                                  text-anchor: end; font-family: "SF Mono", monospace; }}
   .stage1-svg .row-pct       {{ font-size: 10px; fill: var(--text2);
-                                 font-family: "SF Mono", monospace;
-                                 opacity: 0; transition: opacity 0.6s ease 0.5s; }}
+                                 font-family: "SF Mono", monospace; }}
+  html.js .stage1-svg .row-pct {{ opacity: 0; transition: opacity 0.6s ease 0.5s; }}
   .stage1-svg.visible .row-pct {{ opacity: 1; }}
   .stage1-svg .bar           {{ transition: width 0.8s cubic-bezier(.4,1.4,.5,1);
                                  transform-origin: left center; cursor: default; }}
@@ -1923,9 +1930,10 @@ html <- glue('
   .tooltip .tt-sub   {{ font-size: 10px; color: rgba(255,255,255,0.55);
                          margin-top: 3px; }}
 
-  /* Scroll-triggered fade-in for sections */
-  section.section {{ opacity: 0; transform: translateY(10px);
-                      transition: opacity 0.6s ease, transform 0.6s ease; }}
+  /* Scroll-triggered fade-in for sections (JS-driven; only initialise when
+     JS is confirmed available so non-JS previews still render the content). */
+  html.js section.section {{ opacity: 0; transform: translateY(10px);
+                              transition: opacity 0.6s ease, transform 0.6s ease; }}
   section.section.visible {{ opacity: 1; transform: translateY(0); }}
 
   /* Card + figure entrance refinements */

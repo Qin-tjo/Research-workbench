@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0F6E56">
+<script>document.documentElement.classList.add("js");</script>
 <meta name="description" content="MTAP / PRMT5 target-intelligence dashboard — genomic landscape, mechanism, clinical landscape, and synthesis. Built from TCGA ABSOLUTE + recount3 + MC3 + ClinicalTrials.gov.">
 <meta property="og:title" content="MTAP target intelligence dashboard">
 <meta property="og:description" content="MTAP / PRMT5 axis: prevalence across 33 TCGA cohorts, focality of 9p21 deletions, co-deletion partners, clinical trial landscape, and synthesis. All claims cited.">
@@ -135,9 +136,11 @@
   }
 
   /* Figure / image sizing — keep visuals from dominating full-page view */
-  .fig-wrap { margin: 16px auto; max-width: 920px; padding: 0;
-                opacity: 0; transform: translateY(14px);
-                transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fig-wrap { margin: 16px auto; max-width: 920px; padding: 0; }
+  /* Fade-in is JS-driven (IntersectionObserver). Without JS, content
+     must remain visible — scope the initial opacity: 0 to .js only. */
+  html.js .fig-wrap { opacity: 0; transform: translateY(14px);
+                        transition: opacity 0.7s ease, transform 0.7s ease; }
   /* Full-width variant: Figure 1 + 2 take the full section width so the
      headline figures are easier to read. */
   .fig-wrap.fig-full { max-width: 100%; }
@@ -150,9 +153,9 @@
               border: 0.5px solid var(--border);
               border-radius: 8px; margin: 6px auto 6px;
               background: white; display: block;
-              box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-              opacity: 0; transform: translateY(14px);
-              transition: opacity 0.7s ease, transform 0.7s ease; }
+              box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+  html.js img.fig { opacity: 0; transform: translateY(14px);
+                      transition: opacity 0.7s ease, transform 0.7s ease; }
   img.fig.visible { opacity: 1; transform: translateY(0); }
 
   /* Shared figure SVG */
@@ -361,8 +364,8 @@
   .stage1-svg .cohort-label  { font-size: 10px; fill: var(--text); font-weight: 600;
                                  text-anchor: end; font-family: "SF Mono", monospace; }
   .stage1-svg .row-pct       { font-size: 10px; fill: var(--text2);
-                                 font-family: "SF Mono", monospace;
-                                 opacity: 0; transition: opacity 0.6s ease 0.5s; }
+                                 font-family: "SF Mono", monospace; }
+  html.js .stage1-svg .row-pct { opacity: 0; transition: opacity 0.6s ease 0.5s; }
   .stage1-svg.visible .row-pct { opacity: 1; }
   .stage1-svg .bar           { transition: width 0.8s cubic-bezier(.4,1.4,.5,1);
                                  transform-origin: left center; cursor: default; }
@@ -392,9 +395,10 @@
   .tooltip .tt-sub   { font-size: 10px; color: rgba(255,255,255,0.55);
                          margin-top: 3px; }
 
-  /* Scroll-triggered fade-in for sections */
-  section.section { opacity: 0; transform: translateY(10px);
-                      transition: opacity 0.6s ease, transform 0.6s ease; }
+  /* Scroll-triggered fade-in for sections (JS-driven; only initialise when
+     JS is confirmed available so non-JS previews still render the content). */
+  html.js section.section { opacity: 0; transform: translateY(10px);
+                              transition: opacity 0.6s ease, transform 0.6s ease; }
   section.section.visible { opacity: 1; transform: translateY(0); }
 
   /* Card + figure entrance refinements */
@@ -786,7 +790,7 @@
 <header class="db-h">
   <div class="tpill">target intelligence</div>
   <h1>MTAP target intelligence dashboard</h1>
-  <div class="meta">Generated 2026-06-17 12:46 · 36 citations · 37 audit rows</div>
+  <div class="meta">Generated 2026-06-17 13:06 · 36 citations · 37 audit rows</div>
 </header>
 
 <div id="scroll-progress" aria-hidden="true"></div>
@@ -831,201 +835,201 @@
   <g class="bar-row" data-cohort="GBM" data-n="370" data-homdel="43.2" data-hetdel="26.8" data-total="70.0">
       <rect class="row-hit" x="0" y="42" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="59">GBM</text>
-      <rect class="bar bar-hom" x="116" y="44" rx="2" ry="2" height="22" data-target-w="216.22" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="44" rx="2" ry="2" height="22" data-target-w="133.78" width="0" data-target-x="332.22"></rect>
-      <text class="row-pct" x="122.0" y="59" data-target-x="472.0">n=370 · 43.2% / 26.8%</text>
+      <rect class="bar bar-hom" x="116" y="44" rx="2" ry="2" height="22" width="216.22"></rect>
+      <rect class="bar bar-het" x="332.22" y="44" rx="2" ry="2" height="22" width="133.78"></rect>
+      <text class="row-pct" x="472.0" y="59">n=370 · 43.2% / 26.8%</text>
     </g><g class="bar-row" data-cohort="MESO" data-n="81" data-homdel="35.8" data-hetdel="16.0" data-total="51.9">
       <rect class="row-hit" x="0" y="68" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="85">MESO</text>
-      <rect class="bar bar-hom" x="116" y="70" rx="2" ry="2" height="22" data-target-w="179.01" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="70" rx="2" ry="2" height="22" data-target-w="80.25" width="0" data-target-x="295.01"></rect>
-      <text class="row-pct" x="122.0" y="85" data-target-x="381.3">n=81 · 35.8% / 16.0%</text>
+      <rect class="bar bar-hom" x="116" y="70" rx="2" ry="2" height="22" width="179.01"></rect>
+      <rect class="bar bar-het" x="295.01" y="70" rx="2" ry="2" height="22" width="80.25"></rect>
+      <text class="row-pct" x="381.3" y="85">n=81 · 35.8% / 16.0%</text>
     </g><g class="bar-row" data-cohort="BLCA" data-n="401" data-homdel="23.2" data-hetdel="13.5" data-total="36.7">
       <rect class="row-hit" x="0" y="94" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="111">BLCA</text>
-      <rect class="bar bar-hom" x="116" y="96" rx="2" ry="2" height="22" data-target-w="115.96" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="96" rx="2" ry="2" height="22" data-target-w="67.33" width="0" data-target-x="231.96"></rect>
-      <text class="row-pct" x="122.0" y="111" data-target-x="305.3">n=401 · 23.2% / 13.5%</text>
+      <rect class="bar bar-hom" x="116" y="96" rx="2" ry="2" height="22" width="115.96"></rect>
+      <rect class="bar bar-het" x="231.96" y="96" rx="2" ry="2" height="22" width="67.33"></rect>
+      <text class="row-pct" x="305.3" y="111">n=401 · 23.2% / 13.5%</text>
     </g><g class="bar-row" data-cohort="PAAD" data-n="165" data-homdel="21.2" data-hetdel="31.5" data-total="52.7">
       <rect class="row-hit" x="0" y="120" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="137">PAAD</text>
-      <rect class="bar bar-hom" x="116" y="122" rx="2" ry="2" height="22" data-target-w="106.06" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="122" rx="2" ry="2" height="22" data-target-w="157.58" width="0" data-target-x="222.06"></rect>
-      <text class="row-pct" x="122.0" y="137" data-target-x="385.6">n=165 · 21.2% / 31.5%</text>
+      <rect class="bar bar-hom" x="116" y="122" rx="2" ry="2" height="22" width="106.06"></rect>
+      <rect class="bar bar-het" x="222.06" y="122" rx="2" ry="2" height="22" width="157.58"></rect>
+      <text class="row-pct" x="385.6" y="137">n=165 · 21.2% / 31.5%</text>
     </g><g class="bar-row" data-cohort="ESCA" data-n="162" data-homdel="17.9" data-hetdel="24.1" data-total="42.0">
       <rect class="row-hit" x="0" y="146" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="163">ESCA</text>
-      <rect class="bar bar-hom" x="116" y="148" rx="2" ry="2" height="22" data-target-w="89.51" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="148" rx="2" ry="2" height="22" data-target-w="120.37" width="0" data-target-x="205.51"></rect>
-      <text class="row-pct" x="122.0" y="163" data-target-x="331.9">n=162 · 17.9% / 24.1%</text>
+      <rect class="bar bar-hom" x="116" y="148" rx="2" ry="2" height="22" width="89.51"></rect>
+      <rect class="bar bar-het" x="205.51" y="148" rx="2" ry="2" height="22" width="120.37"></rect>
+      <text class="row-pct" x="331.9" y="163">n=162 · 17.9% / 24.1%</text>
     </g><g class="bar-row" data-cohort="LUSC" data-n="468" data-homdel="16.0" data-hetdel="31.6" data-total="47.6">
       <rect class="row-hit" x="0" y="172" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="189">LUSC</text>
-      <rect class="bar bar-hom" x="116" y="174" rx="2" ry="2" height="22" data-target-w="80.13" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="174" rx="2" ry="2" height="22" data-target-w="158.12" width="0" data-target-x="196.13"></rect>
-      <text class="row-pct" x="122.0" y="189" data-target-x="360.2">n=468 · 16.0% / 31.6%</text>
+      <rect class="bar bar-hom" x="116" y="174" rx="2" ry="2" height="22" width="80.13"></rect>
+      <rect class="bar bar-het" x="196.13" y="174" rx="2" ry="2" height="22" width="158.12"></rect>
+      <text class="row-pct" x="360.2" y="189">n=468 · 16.0% / 31.6%</text>
     </g><g class="bar-row" data-cohort="SKCM" data-n="104" data-homdel="14.4" data-hetdel="37.5" data-total="51.9">
       <rect class="row-hit" x="0" y="198" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="215">SKCM</text>
-      <rect class="bar bar-hom" x="116" y="200" rx="2" ry="2" height="22" data-target-w="72.12" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="200" rx="2" ry="2" height="22" data-target-w="187.50" width="0" data-target-x="188.12"></rect>
-      <text class="row-pct" x="122.0" y="215" data-target-x="381.6">n=104 · 14.4% / 37.5%</text>
+      <rect class="bar bar-hom" x="116" y="200" rx="2" ry="2" height="22" width="72.12"></rect>
+      <rect class="bar bar-het" x="188.12" y="200" rx="2" ry="2" height="22" width="187.50"></rect>
+      <text class="row-pct" x="381.6" y="215">n=104 · 14.4% / 37.5%</text>
     </g><g class="bar-row" data-cohort="HNSC" data-n="493" data-homdel="10.5" data-hetdel="20.9" data-total="31.4">
       <rect class="row-hit" x="0" y="224" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="241">HNSC</text>
-      <rect class="bar bar-hom" x="116" y="226" rx="2" ry="2" height="22" data-target-w="52.74" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="226" rx="2" ry="2" height="22" data-target-w="104.46" width="0" data-target-x="168.74"></rect>
-      <text class="row-pct" x="122.0" y="241" data-target-x="279.2">n=493 · 10.5% / 20.9%</text>
+      <rect class="bar bar-hom" x="116" y="226" rx="2" ry="2" height="22" width="52.74"></rect>
+      <rect class="bar bar-het" x="168.74" y="226" rx="2" ry="2" height="22" width="104.46"></rect>
+      <text class="row-pct" x="279.2" y="241">n=493 · 10.5% / 20.9%</text>
     </g><g class="bar-row" data-cohort="LUAD" data-n="493" data-homdel="9.7" data-hetdel="21.9" data-total="31.6">
       <rect class="row-hit" x="0" y="250" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="267">LUAD</text>
-      <rect class="bar bar-hom" x="116" y="252" rx="2" ry="2" height="22" data-target-w="48.68" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="252" rx="2" ry="2" height="22" data-target-w="109.53" width="0" data-target-x="164.68"></rect>
-      <text class="row-pct" x="122.0" y="267" data-target-x="280.2">n=493 · 9.7% / 21.9%</text>
+      <rect class="bar bar-hom" x="116" y="252" rx="2" ry="2" height="22" width="48.68"></rect>
+      <rect class="bar bar-het" x="164.68" y="252" rx="2" ry="2" height="22" width="109.53"></rect>
+      <text class="row-pct" x="280.2" y="267">n=493 · 9.7% / 21.9%</text>
     </g><g class="bar-row" data-cohort="SARC" data-n="244" data-homdel="9.0" data-hetdel="14.3" data-total="23.4">
       <rect class="row-hit" x="0" y="276" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="293">SARC</text>
-      <rect class="bar bar-hom" x="116" y="278" rx="2" ry="2" height="22" data-target-w="45.08" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="278" rx="2" ry="2" height="22" data-target-w="71.72" width="0" data-target-x="161.08"></rect>
-      <text class="row-pct" x="122.0" y="293" data-target-x="238.8">n=244 · 9.0% / 14.3%</text>
+      <rect class="bar bar-hom" x="116" y="278" rx="2" ry="2" height="22" width="45.08"></rect>
+      <rect class="bar bar-het" x="161.08" y="278" rx="2" ry="2" height="22" width="71.72"></rect>
+      <text class="row-pct" x="238.8" y="293">n=244 · 9.0% / 14.3%</text>
     </g><g class="bar-row" data-cohort="CHOL" data-n="36" data-homdel="8.3" data-hetdel="38.9" data-total="47.2">
       <rect class="row-hit" x="0" y="302" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="319">CHOL</text>
-      <rect class="bar bar-hom" x="116" y="304" rx="2" ry="2" height="22" data-target-w="41.67" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="304" rx="2" ry="2" height="22" data-target-w="194.44" width="0" data-target-x="157.67"></rect>
-      <text class="row-pct" x="122.0" y="319" data-target-x="358.1">n=36 · 8.3% / 38.9%</text>
+      <rect class="bar bar-hom" x="116" y="304" rx="2" ry="2" height="22" width="41.67"></rect>
+      <rect class="bar bar-het" x="157.67" y="304" rx="2" ry="2" height="22" width="194.44"></rect>
+      <text class="row-pct" x="358.1" y="319">n=36 · 8.3% / 38.9%</text>
     </g><g class="bar-row" data-cohort="LGG" data-n="500" data-homdel="7.0" data-hetdel="13.8" data-total="20.8">
       <rect class="row-hit" x="0" y="328" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="345">LGG</text>
-      <rect class="bar bar-hom" x="116" y="330" rx="2" ry="2" height="22" data-target-w="35.00" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="330" rx="2" ry="2" height="22" data-target-w="69.00" width="0" data-target-x="151.00"></rect>
-      <text class="row-pct" x="122.0" y="345" data-target-x="226.0">n=500 · 7.0% / 13.8%</text>
+      <rect class="bar bar-hom" x="116" y="330" rx="2" ry="2" height="22" width="35.00"></rect>
+      <rect class="bar bar-het" x="151.00" y="330" rx="2" ry="2" height="22" width="69.00"></rect>
+      <text class="row-pct" x="226.0" y="345">n=500 · 7.0% / 13.8%</text>
     </g><g class="bar-row" data-cohort="STAD" data-n="423" data-homdel="5.7" data-hetdel="18.7" data-total="24.3">
       <rect class="row-hit" x="0" y="354" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="371">STAD</text>
-      <rect class="bar bar-hom" x="116" y="356" rx="2" ry="2" height="22" data-target-w="28.37" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="356" rx="2" ry="2" height="22" data-target-w="93.38" width="0" data-target-x="144.37"></rect>
-      <text class="row-pct" x="122.0" y="371" data-target-x="243.7">n=423 · 5.7% / 18.7%</text>
+      <rect class="bar bar-hom" x="116" y="356" rx="2" ry="2" height="22" width="28.37"></rect>
+      <rect class="bar bar-het" x="144.37" y="356" rx="2" ry="2" height="22" width="93.38"></rect>
+      <text class="row-pct" x="243.7" y="371">n=423 · 5.7% / 18.7%</text>
     </g><g class="bar-row" data-cohort="THYM" data-n="106" data-homdel="2.8" data-hetdel="2.8" data-total="5.7">
       <rect class="row-hit" x="0" y="380" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="397">THYM</text>
-      <rect class="bar bar-hom" x="116" y="382" rx="2" ry="2" height="22" data-target-w="14.15" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="382" rx="2" ry="2" height="22" data-target-w="14.15" width="0" data-target-x="130.15"></rect>
-      <text class="row-pct" x="122.0" y="397" data-target-x="150.3">n=106 · 2.8% / 2.8%</text>
+      <rect class="bar bar-hom" x="116" y="382" rx="2" ry="2" height="22" width="14.15"></rect>
+      <rect class="bar bar-het" x="130.15" y="382" rx="2" ry="2" height="22" width="14.15"></rect>
+      <text class="row-pct" x="150.3" y="397">n=106 · 2.8% / 2.8%</text>
     </g><g class="bar-row" data-cohort="BRCA" data-n="1023" data-homdel="2.3" data-hetdel="11.7" data-total="14.1">
       <rect class="row-hit" x="0" y="406" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="423">BRCA</text>
-      <rect class="bar bar-hom" x="116" y="408" rx="2" ry="2" height="22" data-target-w="11.73" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="408" rx="2" ry="2" height="22" data-target-w="58.65" width="0" data-target-x="127.73"></rect>
-      <text class="row-pct" x="122.0" y="423" data-target-x="192.4">n=1023 · 2.3% / 11.7%</text>
+      <rect class="bar bar-hom" x="116" y="408" rx="2" ry="2" height="22" width="11.73"></rect>
+      <rect class="bar bar-het" x="127.73" y="408" rx="2" ry="2" height="22" width="58.65"></rect>
+      <text class="row-pct" x="192.4" y="423">n=1023 · 2.3% / 11.7%</text>
     </g><g class="bar-row" data-cohort="DLBC" data-n="47" data-homdel="2.1" data-hetdel="19.1" data-total="21.3">
       <rect class="row-hit" x="0" y="432" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="449">DLBC</text>
-      <rect class="bar bar-hom" x="116" y="434" rx="2" ry="2" height="22" data-target-w="10.64" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="434" rx="2" ry="2" height="22" data-target-w="95.74" width="0" data-target-x="126.64"></rect>
-      <text class="row-pct" x="122.0" y="449" data-target-x="228.4">n=47 · 2.1% / 19.1%</text>
+      <rect class="bar bar-hom" x="116" y="434" rx="2" ry="2" height="22" width="10.64"></rect>
+      <rect class="bar bar-het" x="126.64" y="434" rx="2" ry="2" height="22" width="95.74"></rect>
+      <text class="row-pct" x="228.4" y="449">n=47 · 2.1% / 19.1%</text>
     </g><g class="bar-row" data-cohort="OV" data-n="395" data-homdel="2.0" data-hetdel="18.5" data-total="20.5">
       <rect class="row-hit" x="0" y="458" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="475">OV</text>
-      <rect class="bar bar-hom" x="116" y="460" rx="2" ry="2" height="22" data-target-w="10.13" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="460" rx="2" ry="2" height="22" data-target-w="92.41" width="0" data-target-x="126.13"></rect>
-      <text class="row-pct" x="122.0" y="475" data-target-x="224.5">n=395 · 2.0% / 18.5%</text>
+      <rect class="bar bar-hom" x="116" y="460" rx="2" ry="2" height="22" width="10.13"></rect>
+      <rect class="bar bar-het" x="126.13" y="460" rx="2" ry="2" height="22" width="92.41"></rect>
+      <text class="row-pct" x="224.5" y="475">n=395 · 2.0% / 18.5%</text>
     </g><g class="bar-row" data-cohort="LIHC" data-n="360" data-homdel="1.9" data-hetdel="13.6" data-total="15.6">
       <rect class="row-hit" x="0" y="484" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="501">LIHC</text>
-      <rect class="bar bar-hom" x="116" y="486" rx="2" ry="2" height="22" data-target-w="9.72" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="486" rx="2" ry="2" height="22" data-target-w="68.06" width="0" data-target-x="125.72"></rect>
-      <text class="row-pct" x="122.0" y="501" data-target-x="199.8">n=360 · 1.9% / 13.6%</text>
+      <rect class="bar bar-hom" x="116" y="486" rx="2" ry="2" height="22" width="9.72"></rect>
+      <rect class="bar bar-het" x="125.72" y="486" rx="2" ry="2" height="22" width="68.06"></rect>
+      <text class="row-pct" x="199.8" y="501">n=360 · 1.9% / 13.6%</text>
     </g><g class="bar-row" data-cohort="KIRP" data-n="270" data-homdel="1.9" data-hetdel="11.1" data-total="13.0">
       <rect class="row-hit" x="0" y="510" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="527">KIRP</text>
-      <rect class="bar bar-hom" x="116" y="512" rx="2" ry="2" height="22" data-target-w="9.26" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="512" rx="2" ry="2" height="22" data-target-w="55.56" width="0" data-target-x="125.26"></rect>
-      <text class="row-pct" x="122.0" y="527" data-target-x="186.8">n=270 · 1.9% / 11.1%</text>
+      <rect class="bar bar-hom" x="116" y="512" rx="2" ry="2" height="22" width="9.26"></rect>
+      <rect class="bar bar-het" x="125.26" y="512" rx="2" ry="2" height="22" width="55.56"></rect>
+      <text class="row-pct" x="186.8" y="527">n=270 · 1.9% / 11.1%</text>
     </g><g class="bar-row" data-cohort="KICH" data-n="61" data-homdel="1.6" data-hetdel="21.3" data-total="23.0">
       <rect class="row-hit" x="0" y="536" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="553">KICH</text>
-      <rect class="bar bar-hom" x="116" y="538" rx="2" ry="2" height="22" data-target-w="8.20" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="538" rx="2" ry="2" height="22" data-target-w="106.56" width="0" data-target-x="124.20"></rect>
-      <text class="row-pct" x="122.0" y="553" data-target-x="236.8">n=61 · 1.6% / 21.3%</text>
+      <rect class="bar bar-hom" x="116" y="538" rx="2" ry="2" height="22" width="8.20"></rect>
+      <rect class="bar bar-het" x="124.20" y="538" rx="2" ry="2" height="22" width="106.56"></rect>
+      <text class="row-pct" x="236.8" y="553">n=61 · 1.6% / 21.3%</text>
     </g><g class="bar-row" data-cohort="KIRC" data-n="330" data-homdel="1.2" data-hetdel="13.3" data-total="14.5">
       <rect class="row-hit" x="0" y="562" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="579">KIRC</text>
-      <rect class="bar bar-hom" x="116" y="564" rx="2" ry="2" height="22" data-target-w="6.06" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="564" rx="2" ry="2" height="22" data-target-w="66.67" width="0" data-target-x="122.06"></rect>
-      <text class="row-pct" x="122.0" y="579" data-target-x="194.7">n=330 · 1.2% / 13.3%</text>
+      <rect class="bar bar-hom" x="116" y="564" rx="2" ry="2" height="22" width="6.06"></rect>
+      <rect class="bar bar-het" x="122.06" y="564" rx="2" ry="2" height="22" width="66.67"></rect>
+      <text class="row-pct" x="194.7" y="579">n=330 · 1.2% / 13.3%</text>
     </g><g class="bar-row" data-cohort="ACC" data-n="89" data-homdel="1.1" data-hetdel="30.3" data-total="31.5">
       <rect class="row-hit" x="0" y="588" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="605">ACC</text>
-      <rect class="bar bar-hom" x="116" y="590" rx="2" ry="2" height="22" data-target-w="5.62" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="590" rx="2" ry="2" height="22" data-target-w="151.69" width="0" data-target-x="121.62"></rect>
-      <text class="row-pct" x="122.0" y="605" data-target-x="279.3">n=89 · 1.1% / 30.3%</text>
+      <rect class="bar bar-hom" x="116" y="590" rx="2" ry="2" height="22" width="5.62"></rect>
+      <rect class="bar bar-het" x="121.62" y="590" rx="2" ry="2" height="22" width="151.69"></rect>
+      <text class="row-pct" x="279.3" y="605">n=89 · 1.1% / 30.3%</text>
     </g><g class="bar-row" data-cohort="COAD" data-n="392" data-homdel="0.8" data-hetdel="2.8" data-total="3.6">
       <rect class="row-hit" x="0" y="614" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="631">COAD</text>
-      <rect class="bar bar-hom" x="116" y="616" rx="2" ry="2" height="22" data-target-w="3.83" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="616" rx="2" ry="2" height="22" data-target-w="14.03" width="0" data-target-x="119.83"></rect>
-      <text class="row-pct" x="122.0" y="631" data-target-x="139.9">n=392 · 0.8% / 2.8%</text>
+      <rect class="bar bar-hom" x="116" y="616" rx="2" ry="2" height="22" width="3.83"></rect>
+      <rect class="bar bar-het" x="119.83" y="616" rx="2" ry="2" height="22" width="14.03"></rect>
+      <text class="row-pct" x="139.9" y="631">n=392 · 0.8% / 2.8%</text>
     </g><g class="bar-row" data-cohort="PRAD" data-n="469" data-homdel="0.4" data-hetdel="4.3" data-total="4.7">
       <rect class="row-hit" x="0" y="640" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="657">PRAD</text>
-      <rect class="bar bar-hom" x="116" y="642" rx="2" ry="2" height="22" data-target-w="2.13" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="642" rx="2" ry="2" height="22" data-target-w="21.32" width="0" data-target-x="118.13"></rect>
-      <text class="row-pct" x="122.0" y="657" data-target-x="145.5">n=469 · 0.4% / 4.3%</text>
+      <rect class="bar bar-hom" x="116" y="642" rx="2" ry="2" height="22" width="2.13"></rect>
+      <rect class="bar bar-het" x="118.13" y="642" rx="2" ry="2" height="22" width="21.32"></rect>
+      <text class="row-pct" x="145.5" y="657">n=469 · 0.4% / 4.3%</text>
     </g><g class="bar-row" data-cohort="CESC" data-n="294" data-homdel="0.3" data-hetdel="7.8" data-total="8.2">
       <rect class="row-hit" x="0" y="666" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="683">CESC</text>
-      <rect class="bar bar-hom" x="116" y="668" rx="2" ry="2" height="22" data-target-w="1.70" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="668" rx="2" ry="2" height="22" data-target-w="39.12" width="0" data-target-x="117.70"></rect>
-      <text class="row-pct" x="122.0" y="683" data-target-x="162.8">n=294 · 0.3% / 7.8%</text>
+      <rect class="bar bar-hom" x="116" y="668" rx="2" ry="2" height="22" width="1.70"></rect>
+      <rect class="bar bar-het" x="117.70" y="668" rx="2" ry="2" height="22" width="39.12"></rect>
+      <text class="row-pct" x="162.8" y="683">n=294 · 0.3% / 7.8%</text>
     </g><g class="bar-row" data-cohort="UCS" data-n="56" data-homdel="0.0" data-hetdel="10.7" data-total="10.7">
       <rect class="row-hit" x="0" y="692" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="709">UCS</text>
-      <rect class="bar bar-hom" x="116" y="694" rx="2" ry="2" height="22" data-target-w="0.00" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="694" rx="2" ry="2" height="22" data-target-w="53.57" width="0" data-target-x="116.00"></rect>
-      <text class="row-pct" x="122.0" y="709" data-target-x="175.6">n=56 · 0.0% / 10.7%</text>
+      <rect class="bar bar-hom" x="116" y="694" rx="2" ry="2" height="22" width="0.00"></rect>
+      <rect class="bar bar-het" x="116.00" y="694" rx="2" ry="2" height="22" width="53.57"></rect>
+      <text class="row-pct" x="175.6" y="709">n=56 · 0.0% / 10.7%</text>
     </g><g class="bar-row" data-cohort="UCEC" data-n="493" data-homdel="0.0" data-hetdel="4.9" data-total="4.9">
       <rect class="row-hit" x="0" y="718" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="735">UCEC</text>
-      <rect class="bar bar-hom" x="116" y="720" rx="2" ry="2" height="22" data-target-w="0.00" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="720" rx="2" ry="2" height="22" data-target-w="24.34" width="0" data-target-x="116.00"></rect>
-      <text class="row-pct" x="122.0" y="735" data-target-x="146.3">n=493 · 0.0% / 4.9%</text>
+      <rect class="bar bar-hom" x="116" y="720" rx="2" ry="2" height="22" width="0.00"></rect>
+      <rect class="bar bar-het" x="116.00" y="720" rx="2" ry="2" height="22" width="24.34"></rect>
+      <text class="row-pct" x="146.3" y="735">n=493 · 0.0% / 4.9%</text>
     </g><g class="bar-row" data-cohort="UVM" data-n="80" data-homdel="0.0" data-hetdel="3.8" data-total="3.8">
       <rect class="row-hit" x="0" y="744" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="761">UVM</text>
-      <rect class="bar bar-hom" x="116" y="746" rx="2" ry="2" height="22" data-target-w="0.00" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="746" rx="2" ry="2" height="22" data-target-w="18.75" width="0" data-target-x="116.00"></rect>
-      <text class="row-pct" x="122.0" y="761" data-target-x="140.8">n=80 · 0.0% / 3.8%</text>
+      <rect class="bar bar-hom" x="116" y="746" rx="2" ry="2" height="22" width="0.00"></rect>
+      <rect class="bar bar-het" x="116.00" y="746" rx="2" ry="2" height="22" width="18.75"></rect>
+      <text class="row-pct" x="140.8" y="761">n=80 · 0.0% / 3.8%</text>
     </g><g class="bar-row" data-cohort="TGCT" data-n="149" data-homdel="0.0" data-hetdel="2.7" data-total="2.7">
       <rect class="row-hit" x="0" y="770" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="787">TGCT</text>
-      <rect class="bar bar-hom" x="116" y="772" rx="2" ry="2" height="22" data-target-w="0.00" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="772" rx="2" ry="2" height="22" data-target-w="13.42" width="0" data-target-x="116.00"></rect>
-      <text class="row-pct" x="122.0" y="787" data-target-x="135.4">n=149 · 0.0% / 2.7%</text>
+      <rect class="bar bar-hom" x="116" y="772" rx="2" ry="2" height="22" width="0.00"></rect>
+      <rect class="bar bar-het" x="116.00" y="772" rx="2" ry="2" height="22" width="13.42"></rect>
+      <text class="row-pct" x="135.4" y="787">n=149 · 0.0% / 2.7%</text>
     </g><g class="bar-row" data-cohort="PCPG" data-n="160" data-homdel="0.0" data-hetdel="1.9" data-total="1.9">
       <rect class="row-hit" x="0" y="796" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="813">PCPG</text>
-      <rect class="bar bar-hom" x="116" y="798" rx="2" ry="2" height="22" data-target-w="0.00" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="798" rx="2" ry="2" height="22" data-target-w="9.38" width="0" data-target-x="116.00"></rect>
-      <text class="row-pct" x="122.0" y="813" data-target-x="131.4">n=160 · 0.0% / 1.9%</text>
+      <rect class="bar bar-hom" x="116" y="798" rx="2" ry="2" height="22" width="0.00"></rect>
+      <rect class="bar bar-het" x="116.00" y="798" rx="2" ry="2" height="22" width="9.38"></rect>
+      <text class="row-pct" x="131.4" y="813">n=160 · 0.0% / 1.9%</text>
     </g><g class="bar-row" data-cohort="READ" data-n="139" data-homdel="0.0" data-hetdel="1.4" data-total="1.4">
       <rect class="row-hit" x="0" y="822" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="839">READ</text>
-      <rect class="bar bar-hom" x="116" y="824" rx="2" ry="2" height="22" data-target-w="0.00" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="824" rx="2" ry="2" height="22" data-target-w="7.19" width="0" data-target-x="116.00"></rect>
-      <text class="row-pct" x="122.0" y="839" data-target-x="129.2">n=139 · 0.0% / 1.4%</text>
+      <rect class="bar bar-hom" x="116" y="824" rx="2" ry="2" height="22" width="0.00"></rect>
+      <rect class="bar bar-het" x="116.00" y="824" rx="2" ry="2" height="22" width="7.19"></rect>
+      <text class="row-pct" x="129.2" y="839">n=139 · 0.0% / 1.4%</text>
     </g><g class="bar-row" data-cohort="THCA" data-n="449" data-homdel="0.0" data-hetdel="1.3" data-total="1.3">
       <rect class="row-hit" x="0" y="848" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="865">THCA</text>
-      <rect class="bar bar-hom" x="116" y="850" rx="2" ry="2" height="22" data-target-w="0.00" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="850" rx="2" ry="2" height="22" data-target-w="6.68" width="0" data-target-x="116.00"></rect>
-      <text class="row-pct" x="122.0" y="865" data-target-x="128.7">n=449 · 0.0% / 1.3%</text>
+      <rect class="bar bar-hom" x="116" y="850" rx="2" ry="2" height="22" width="0.00"></rect>
+      <rect class="bar bar-het" x="116.00" y="850" rx="2" ry="2" height="22" width="6.68"></rect>
+      <text class="row-pct" x="128.7" y="865">n=449 · 0.0% / 1.3%</text>
     </g><g class="bar-row" data-cohort="LAML" data-n="124" data-homdel="0.0" data-hetdel="0.0" data-total="0.0">
       <rect class="row-hit" x="0" y="874" width="812" height="26"></rect>
       <text class="cohort-label" x="108" y="891">LAML</text>
-      <rect class="bar bar-hom" x="116" y="876" rx="2" ry="2" height="22" data-target-w="0.00" width="0"></rect>
-      <rect class="bar bar-het" x="116" y="876" rx="2" ry="2" height="22" data-target-w="0.00" width="0" data-target-x="116.00"></rect>
-      <text class="row-pct" x="122.0" y="891" data-target-x="122.0">n=124 · 0.0% / 0.0%</text>
+      <rect class="bar bar-hom" x="116" y="876" rx="2" ry="2" height="22" width="0.00"></rect>
+      <rect class="bar bar-het" x="116.00" y="876" rx="2" ry="2" height="22" width="0.00"></rect>
+      <text class="row-pct" x="122.0" y="891">n=124 · 0.0% / 0.0%</text>
     </g>
 
   <text class="axis-title" x="341" y="934" text-anchor="middle">% of cohort samples</text>
@@ -1286,339 +1290,339 @@
       <text class="cohort-label" x="86" y="91.5" text-anchor="end">GBM</text>
       <g class="f3-row" data-cohort="GBM" data-class="hetdel" data-n="98" data-med="25.85" data-focal="11.2" data-inter="37.8" data-arm="51.0">
         <rect class="f3-hit" x="92" y="76" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="78" rx="2" ry="2" height="19" width="0" data-target-w="35.92"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="78" rx="2" ry="2" height="19" width="0" data-target-w="120.82" data-target-x="131.92"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="78" rx="2" ry="2" height="19" width="0" data-target-w="163.27" data-target-x="252.73"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="78" rx="2" ry="2" height="19" width="35.92"></rect>
+        <rect class="f3-seg f3-inter" x="131.92" y="78" rx="2" ry="2" height="19" width="120.82"></rect>
+        <rect class="f3-seg f3-arm"   x="252.73" y="78" rx="2" ry="2" height="19" width="163.27"></rect>
         <text class="f3-row-label" x="422.0" y="91.5">n=98 · 25.8 Mb</text>
       </g><g class="f3-row" data-cohort="GBM" data-class="homdel" data-n="160" data-med="2.56" data-focal="59.4" data-inter="40.6" data-arm="0.0">
         <rect class="f3-hit" x="582" y="76" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="78" rx="2" ry="2" height="19" width="0" data-target-w="190.00"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="78" rx="2" ry="2" height="19" width="0" data-target-w="130.00" data-target-x="776.00"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="78" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="78" rx="2" ry="2" height="19" width="190.00"></rect>
+        <rect class="f3-seg f3-inter" x="776.00" y="78" rx="2" ry="2" height="19" width="130.00"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="78" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="91.5">n=160 · 2.6 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="114.5" text-anchor="end">MESO</text>
       <g class="f3-row" data-cohort="MESO" data-class="hetdel" data-n="13" data-med="21.92" data-focal="15.4" data-inter="46.2" data-arm="38.5">
         <rect class="f3-hit" x="92" y="99" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="101" rx="2" ry="2" height="19" width="0" data-target-w="49.23"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="101" rx="2" ry="2" height="19" width="0" data-target-w="147.69" data-target-x="145.23"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="101" rx="2" ry="2" height="19" width="0" data-target-w="123.08" data-target-x="292.92"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="101" rx="2" ry="2" height="19" width="49.23"></rect>
+        <rect class="f3-seg f3-inter" x="145.23" y="101" rx="2" ry="2" height="19" width="147.69"></rect>
+        <rect class="f3-seg f3-arm"   x="292.92" y="101" rx="2" ry="2" height="19" width="123.08"></rect>
         <text class="f3-row-label" x="422.0" y="114.5">n=13 · 21.9 Mb</text>
       </g><g class="f3-row" data-cohort="MESO" data-class="homdel" data-n="29" data-med="2.01" data-focal="55.2" data-inter="44.8" data-arm="0.0">
         <rect class="f3-hit" x="582" y="99" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="101" rx="2" ry="2" height="19" width="0" data-target-w="176.55"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="101" rx="2" ry="2" height="19" width="0" data-target-w="143.45" data-target-x="762.55"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="101" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="101" rx="2" ry="2" height="19" width="176.55"></rect>
+        <rect class="f3-seg f3-inter" x="762.55" y="101" rx="2" ry="2" height="19" width="143.45"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="101" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="114.5">n=29 · 2.0 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="137.5" text-anchor="end">BLCA</text>
       <g class="f3-row" data-cohort="BLCA" data-class="hetdel" data-n="53" data-med="25.44" data-focal="7.5" data-inter="35.8" data-arm="56.6">
         <rect class="f3-hit" x="92" y="122" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="124" rx="2" ry="2" height="19" width="0" data-target-w="24.15"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="124" rx="2" ry="2" height="19" width="0" data-target-w="114.72" data-target-x="120.15"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="124" rx="2" ry="2" height="19" width="0" data-target-w="181.13" data-target-x="234.87"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="124" rx="2" ry="2" height="19" width="24.15"></rect>
+        <rect class="f3-seg f3-inter" x="120.15" y="124" rx="2" ry="2" height="19" width="114.72"></rect>
+        <rect class="f3-seg f3-arm"   x="234.87" y="124" rx="2" ry="2" height="19" width="181.13"></rect>
         <text class="f3-row-label" x="422.0" y="137.5">n=53 · 25.4 Mb</text>
       </g><g class="f3-row" data-cohort="BLCA" data-class="homdel" data-n="93" data-med="1.47" data-focal="81.7" data-inter="18.3" data-arm="0.0">
         <rect class="f3-hit" x="582" y="122" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="124" rx="2" ry="2" height="19" width="0" data-target-w="261.51"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="124" rx="2" ry="2" height="19" width="0" data-target-w="58.49" data-target-x="847.51"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="124" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="124" rx="2" ry="2" height="19" width="261.51"></rect>
+        <rect class="f3-seg f3-inter" x="847.51" y="124" rx="2" ry="2" height="19" width="58.49"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="124" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="137.5">n=93 · 1.5 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="160.5" text-anchor="end">PAAD</text>
       <g class="f3-row" data-cohort="PAAD" data-class="hetdel" data-n="50" data-med="35.48" data-focal="10.0" data-inter="12.0" data-arm="78.0">
         <rect class="f3-hit" x="92" y="145" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="147" rx="2" ry="2" height="19" width="0" data-target-w="32.00"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="147" rx="2" ry="2" height="19" width="0" data-target-w="38.40" data-target-x="128.00"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="147" rx="2" ry="2" height="19" width="0" data-target-w="249.60" data-target-x="166.40"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="147" rx="2" ry="2" height="19" width="32.00"></rect>
+        <rect class="f3-seg f3-inter" x="128.00" y="147" rx="2" ry="2" height="19" width="38.40"></rect>
+        <rect class="f3-seg f3-arm"   x="166.40" y="147" rx="2" ry="2" height="19" width="249.60"></rect>
         <text class="f3-row-label" x="422.0" y="160.5">n=50 · 35.5 Mb</text>
       </g><g class="f3-row" data-cohort="PAAD" data-class="homdel" data-n="35" data-med="2.48" data-focal="57.1" data-inter="40.0" data-arm="2.9">
         <rect class="f3-hit" x="582" y="145" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="147" rx="2" ry="2" height="19" width="0" data-target-w="182.86"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="147" rx="2" ry="2" height="19" width="0" data-target-w="128.00" data-target-x="768.86"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="147" rx="2" ry="2" height="19" width="0" data-target-w="9.14" data-target-x="896.86"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="147" rx="2" ry="2" height="19" width="182.86"></rect>
+        <rect class="f3-seg f3-inter" x="768.86" y="147" rx="2" ry="2" height="19" width="128.00"></rect>
+        <rect class="f3-seg f3-arm"   x="896.86" y="147" rx="2" ry="2" height="19" width="9.14"></rect>
         <text class="f3-row-label" x="912.0" y="160.5">n=35 · 2.5 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="183.5" text-anchor="end">ESCA</text>
       <g class="f3-row" data-cohort="ESCA" data-class="hetdel" data-n="38" data-med="38.71" data-focal="0.0" data-inter="23.7" data-arm="76.3">
         <rect class="f3-hit" x="92" y="168" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="170" rx="2" ry="2" height="19" width="0" data-target-w="0.00"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="170" rx="2" ry="2" height="19" width="0" data-target-w="75.79" data-target-x="96.00"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="170" rx="2" ry="2" height="19" width="0" data-target-w="244.21" data-target-x="171.79"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="170" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-inter" x="96.00" y="170" rx="2" ry="2" height="19" width="75.79"></rect>
+        <rect class="f3-seg f3-arm"   x="171.79" y="170" rx="2" ry="2" height="19" width="244.21"></rect>
         <text class="f3-row-label" x="422.0" y="183.5">n=38 · 38.7 Mb</text>
       </g><g class="f3-row" data-cohort="ESCA" data-class="homdel" data-n="29" data-med="2.07" data-focal="62.1" data-inter="37.9" data-arm="0.0">
         <rect class="f3-hit" x="582" y="168" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="170" rx="2" ry="2" height="19" width="0" data-target-w="198.62"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="170" rx="2" ry="2" height="19" width="0" data-target-w="121.38" data-target-x="784.62"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="170" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="170" rx="2" ry="2" height="19" width="198.62"></rect>
+        <rect class="f3-seg f3-inter" x="784.62" y="170" rx="2" ry="2" height="19" width="121.38"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="170" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="183.5">n=29 · 2.1 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="206.5" text-anchor="end">LUSC</text>
       <g class="f3-row" data-cohort="LUSC" data-class="hetdel" data-n="145" data-med="37.96" data-focal="2.1" data-inter="17.2" data-arm="80.7">
         <rect class="f3-hit" x="92" y="191" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="193" rx="2" ry="2" height="19" width="0" data-target-w="6.62"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="193" rx="2" ry="2" height="19" width="0" data-target-w="55.17" data-target-x="102.62"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="193" rx="2" ry="2" height="19" width="0" data-target-w="258.21" data-target-x="157.79"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="193" rx="2" ry="2" height="19" width="6.62"></rect>
+        <rect class="f3-seg f3-inter" x="102.62" y="193" rx="2" ry="2" height="19" width="55.17"></rect>
+        <rect class="f3-seg f3-arm"   x="157.79" y="193" rx="2" ry="2" height="19" width="258.21"></rect>
         <text class="f3-row-label" x="422.0" y="206.5">n=145 · 38.0 Mb</text>
       </g><g class="f3-row" data-cohort="LUSC" data-class="homdel" data-n="75" data-med="2.84" data-focal="52.0" data-inter="48.0" data-arm="0.0">
         <rect class="f3-hit" x="582" y="191" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="193" rx="2" ry="2" height="19" width="0" data-target-w="166.40"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="193" rx="2" ry="2" height="19" width="0" data-target-w="153.60" data-target-x="752.40"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="193" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="193" rx="2" ry="2" height="19" width="166.40"></rect>
+        <rect class="f3-seg f3-inter" x="752.40" y="193" rx="2" ry="2" height="19" width="153.60"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="193" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="206.5">n=75 · 2.8 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="229.5" text-anchor="end">SKCM</text>
       <g class="f3-row" data-cohort="SKCM" data-class="hetdel" data-n="39" data-med="39.12" data-focal="7.7" data-inter="17.9" data-arm="74.4">
         <rect class="f3-hit" x="92" y="214" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="216" rx="2" ry="2" height="19" width="0" data-target-w="24.62"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="216" rx="2" ry="2" height="19" width="0" data-target-w="57.44" data-target-x="120.62"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="216" rx="2" ry="2" height="19" width="0" data-target-w="237.95" data-target-x="178.05"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="216" rx="2" ry="2" height="19" width="24.62"></rect>
+        <rect class="f3-seg f3-inter" x="120.62" y="216" rx="2" ry="2" height="19" width="57.44"></rect>
+        <rect class="f3-seg f3-arm"   x="178.05" y="216" rx="2" ry="2" height="19" width="237.95"></rect>
         <text class="f3-row-label" x="422.0" y="229.5">n=39 · 39.1 Mb</text>
       </g><g class="f3-row" data-cohort="SKCM" data-class="homdel" data-n="15" data-med="2.72" data-focal="66.7" data-inter="33.3" data-arm="0.0">
         <rect class="f3-hit" x="582" y="214" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="216" rx="2" ry="2" height="19" width="0" data-target-w="213.33"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="216" rx="2" ry="2" height="19" width="0" data-target-w="106.67" data-target-x="799.33"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="216" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="216" rx="2" ry="2" height="19" width="213.33"></rect>
+        <rect class="f3-seg f3-inter" x="799.33" y="216" rx="2" ry="2" height="19" width="106.67"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="216" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="229.5">n=15 · 2.7 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="252.5" text-anchor="end">HNSC</text>
       <g class="f3-row" data-cohort="HNSC" data-class="hetdel" data-n="98" data-med="35.32" data-focal="4.1" data-inter="19.4" data-arm="76.5">
         <rect class="f3-hit" x="92" y="237" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="239" rx="2" ry="2" height="19" width="0" data-target-w="13.06"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="239" rx="2" ry="2" height="19" width="0" data-target-w="62.04" data-target-x="109.06"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="239" rx="2" ry="2" height="19" width="0" data-target-w="244.90" data-target-x="171.10"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="239" rx="2" ry="2" height="19" width="13.06"></rect>
+        <rect class="f3-seg f3-inter" x="109.06" y="239" rx="2" ry="2" height="19" width="62.04"></rect>
+        <rect class="f3-seg f3-arm"   x="171.10" y="239" rx="2" ry="2" height="19" width="244.90"></rect>
         <text class="f3-row-label" x="422.0" y="252.5">n=98 · 35.3 Mb</text>
       </g><g class="f3-row" data-cohort="HNSC" data-class="homdel" data-n="52" data-med="1.66" data-focal="73.1" data-inter="26.9" data-arm="0.0">
         <rect class="f3-hit" x="582" y="237" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="239" rx="2" ry="2" height="19" width="0" data-target-w="233.85"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="239" rx="2" ry="2" height="19" width="0" data-target-w="86.15" data-target-x="819.85"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="239" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="239" rx="2" ry="2" height="19" width="233.85"></rect>
+        <rect class="f3-seg f3-inter" x="819.85" y="239" rx="2" ry="2" height="19" width="86.15"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="239" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="252.5">n=52 · 1.7 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="275.5" text-anchor="end">LUAD</text>
       <g class="f3-row" data-cohort="LUAD" data-class="hetdel" data-n="105" data-med="38.99" data-focal="4.8" data-inter="20.0" data-arm="75.2">
         <rect class="f3-hit" x="92" y="260" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="262" rx="2" ry="2" height="19" width="0" data-target-w="15.24"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="262" rx="2" ry="2" height="19" width="0" data-target-w="64.00" data-target-x="111.24"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="262" rx="2" ry="2" height="19" width="0" data-target-w="240.76" data-target-x="175.24"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="262" rx="2" ry="2" height="19" width="15.24"></rect>
+        <rect class="f3-seg f3-inter" x="111.24" y="262" rx="2" ry="2" height="19" width="64.00"></rect>
+        <rect class="f3-seg f3-arm"   x="175.24" y="262" rx="2" ry="2" height="19" width="240.76"></rect>
         <text class="f3-row-label" x="422.0" y="275.5">n=105 · 39.0 Mb</text>
       </g><g class="f3-row" data-cohort="LUAD" data-class="homdel" data-n="48" data-med="2.56" data-focal="64.6" data-inter="33.3" data-arm="2.1">
         <rect class="f3-hit" x="582" y="260" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="262" rx="2" ry="2" height="19" width="0" data-target-w="206.67"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="262" rx="2" ry="2" height="19" width="0" data-target-w="106.67" data-target-x="792.67"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="262" rx="2" ry="2" height="19" width="0" data-target-w="6.67" data-target-x="899.33"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="262" rx="2" ry="2" height="19" width="206.67"></rect>
+        <rect class="f3-seg f3-inter" x="792.67" y="262" rx="2" ry="2" height="19" width="106.67"></rect>
+        <rect class="f3-seg f3-arm"   x="899.33" y="262" rx="2" ry="2" height="19" width="6.67"></rect>
         <text class="f3-row-label" x="912.0" y="275.5">n=48 · 2.6 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="298.5" text-anchor="end">SARC</text>
       <g class="f3-row" data-cohort="SARC" data-class="hetdel" data-n="34" data-med="28.82" data-focal="11.8" data-inter="26.5" data-arm="61.8">
         <rect class="f3-hit" x="92" y="283" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="285" rx="2" ry="2" height="19" width="0" data-target-w="37.65"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="285" rx="2" ry="2" height="19" width="0" data-target-w="84.71" data-target-x="133.65"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="285" rx="2" ry="2" height="19" width="0" data-target-w="197.65" data-target-x="218.35"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="285" rx="2" ry="2" height="19" width="37.65"></rect>
+        <rect class="f3-seg f3-inter" x="133.65" y="285" rx="2" ry="2" height="19" width="84.71"></rect>
+        <rect class="f3-seg f3-arm"   x="218.35" y="285" rx="2" ry="2" height="19" width="197.65"></rect>
         <text class="f3-row-label" x="422.0" y="298.5">n=34 · 28.8 Mb</text>
       </g><g class="f3-row" data-cohort="SARC" data-class="homdel" data-n="22" data-med="2.06" data-focal="59.1" data-inter="40.9" data-arm="0.0">
         <rect class="f3-hit" x="582" y="283" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="285" rx="2" ry="2" height="19" width="0" data-target-w="189.09"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="285" rx="2" ry="2" height="19" width="0" data-target-w="130.91" data-target-x="775.09"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="285" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="285" rx="2" ry="2" height="19" width="189.09"></rect>
+        <rect class="f3-seg f3-inter" x="775.09" y="285" rx="2" ry="2" height="19" width="130.91"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="285" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="298.5">n=22 · 2.1 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="321.5" text-anchor="end">CHOL</text>
       <g class="f3-row" data-cohort="CHOL" data-class="hetdel" data-n="14" data-med="39.12" data-focal="7.1" data-inter="7.1" data-arm="85.7">
         <rect class="f3-hit" x="92" y="306" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="308" rx="2" ry="2" height="19" width="0" data-target-w="22.86"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="308" rx="2" ry="2" height="19" width="0" data-target-w="22.86" data-target-x="118.86"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="308" rx="2" ry="2" height="19" width="0" data-target-w="274.29" data-target-x="141.71"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="308" rx="2" ry="2" height="19" width="22.86"></rect>
+        <rect class="f3-seg f3-inter" x="118.86" y="308" rx="2" ry="2" height="19" width="22.86"></rect>
+        <rect class="f3-seg f3-arm"   x="141.71" y="308" rx="2" ry="2" height="19" width="274.29"></rect>
         <text class="f3-row-label" x="422.0" y="321.5">n=14 · 39.1 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="321.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="344.5" text-anchor="end">LGG</text>
       <g class="f3-row" data-cohort="LGG" data-class="hetdel" data-n="69" data-med="30.46" data-focal="8.7" data-inter="27.5" data-arm="63.8">
         <rect class="f3-hit" x="92" y="329" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="331" rx="2" ry="2" height="19" width="0" data-target-w="27.83"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="331" rx="2" ry="2" height="19" width="0" data-target-w="88.12" data-target-x="123.83"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="331" rx="2" ry="2" height="19" width="0" data-target-w="204.06" data-target-x="211.94"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="331" rx="2" ry="2" height="19" width="27.83"></rect>
+        <rect class="f3-seg f3-inter" x="123.83" y="331" rx="2" ry="2" height="19" width="88.12"></rect>
+        <rect class="f3-seg f3-arm"   x="211.94" y="331" rx="2" ry="2" height="19" width="204.06"></rect>
         <text class="f3-row-label" x="422.0" y="344.5">n=69 · 30.5 Mb</text>
       </g><g class="f3-row" data-cohort="LGG" data-class="homdel" data-n="35" data-med="2.73" data-focal="57.1" data-inter="40.0" data-arm="2.9">
         <rect class="f3-hit" x="582" y="329" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="331" rx="2" ry="2" height="19" width="0" data-target-w="182.86"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="331" rx="2" ry="2" height="19" width="0" data-target-w="128.00" data-target-x="768.86"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="331" rx="2" ry="2" height="19" width="0" data-target-w="9.14" data-target-x="896.86"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="331" rx="2" ry="2" height="19" width="182.86"></rect>
+        <rect class="f3-seg f3-inter" x="768.86" y="331" rx="2" ry="2" height="19" width="128.00"></rect>
+        <rect class="f3-seg f3-arm"   x="896.86" y="331" rx="2" ry="2" height="19" width="9.14"></rect>
         <text class="f3-row-label" x="912.0" y="344.5">n=35 · 2.7 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="367.5" text-anchor="end">STAD</text>
       <g class="f3-row" data-cohort="STAD" data-class="hetdel" data-n="79" data-med="30.00" data-focal="7.6" data-inter="22.8" data-arm="69.6">
         <rect class="f3-hit" x="92" y="352" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="354" rx="2" ry="2" height="19" width="0" data-target-w="24.30"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="354" rx="2" ry="2" height="19" width="0" data-target-w="72.91" data-target-x="120.30"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="354" rx="2" ry="2" height="19" width="0" data-target-w="222.78" data-target-x="193.22"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="354" rx="2" ry="2" height="19" width="24.30"></rect>
+        <rect class="f3-seg f3-inter" x="120.30" y="354" rx="2" ry="2" height="19" width="72.91"></rect>
+        <rect class="f3-seg f3-arm"   x="193.22" y="354" rx="2" ry="2" height="19" width="222.78"></rect>
         <text class="f3-row-label" x="422.0" y="367.5">n=79 · 30.0 Mb</text>
       </g><g class="f3-row" data-cohort="STAD" data-class="homdel" data-n="24" data-med="1.77" data-focal="70.8" data-inter="29.2" data-arm="0.0">
         <rect class="f3-hit" x="582" y="352" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="354" rx="2" ry="2" height="19" width="0" data-target-w="226.67"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="354" rx="2" ry="2" height="19" width="0" data-target-w="93.33" data-target-x="812.67"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="354" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="354" rx="2" ry="2" height="19" width="226.67"></rect>
+        <rect class="f3-seg f3-inter" x="812.67" y="354" rx="2" ry="2" height="19" width="93.33"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="354" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="367.5">n=24 · 1.8 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="390.5" text-anchor="end">BRCA</text>
       <g class="f3-row" data-cohort="BRCA" data-class="hetdel" data-n="119" data-med="36.45" data-focal="5.9" data-inter="18.5" data-arm="75.6">
         <rect class="f3-hit" x="92" y="375" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="377" rx="2" ry="2" height="19" width="0" data-target-w="18.82"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="377" rx="2" ry="2" height="19" width="0" data-target-w="59.16" data-target-x="114.82"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="377" rx="2" ry="2" height="19" width="0" data-target-w="242.02" data-target-x="173.98"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="377" rx="2" ry="2" height="19" width="18.82"></rect>
+        <rect class="f3-seg f3-inter" x="114.82" y="377" rx="2" ry="2" height="19" width="59.16"></rect>
+        <rect class="f3-seg f3-arm"   x="173.98" y="377" rx="2" ry="2" height="19" width="242.02"></rect>
         <text class="f3-row-label" x="422.0" y="390.5">n=119 · 36.4 Mb</text>
       </g><g class="f3-row" data-cohort="BRCA" data-class="homdel" data-n="24" data-med="2.19" data-focal="58.3" data-inter="41.7" data-arm="0.0">
         <rect class="f3-hit" x="582" y="375" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="377" rx="2" ry="2" height="19" width="0" data-target-w="186.67"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="377" rx="2" ry="2" height="19" width="0" data-target-w="133.33" data-target-x="772.67"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="377" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="377" rx="2" ry="2" height="19" width="186.67"></rect>
+        <rect class="f3-seg f3-inter" x="772.67" y="377" rx="2" ry="2" height="19" width="133.33"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="377" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="390.5">n=24 · 2.2 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="413.5" text-anchor="end">DLBC</text>
       <g class="f3-row" data-cohort="DLBC" data-class="hetdel" data-n="7" data-med="0.92" data-focal="57.1" data-inter="14.3" data-arm="28.6">
         <rect class="f3-hit" x="92" y="398" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="400" rx="2" ry="2" height="19" width="0" data-target-w="182.86"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="400" rx="2" ry="2" height="19" width="0" data-target-w="45.71" data-target-x="278.86"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="400" rx="2" ry="2" height="19" width="0" data-target-w="91.43" data-target-x="324.57"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="400" rx="2" ry="2" height="19" width="182.86"></rect>
+        <rect class="f3-seg f3-inter" x="278.86" y="400" rx="2" ry="2" height="19" width="45.71"></rect>
+        <rect class="f3-seg f3-arm"   x="324.57" y="400" rx="2" ry="2" height="19" width="91.43"></rect>
         <text class="f3-row-label" x="422.0" y="413.5">n=7 · 0.9 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="413.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="436.5" text-anchor="end">OV</text>
       <g class="f3-row" data-cohort="OV" data-class="hetdel" data-n="73" data-med="32.62" data-focal="1.4" data-inter="26.0" data-arm="72.6">
         <rect class="f3-hit" x="92" y="421" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="423" rx="2" ry="2" height="19" width="0" data-target-w="4.38"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="423" rx="2" ry="2" height="19" width="0" data-target-w="83.29" data-target-x="100.38"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="423" rx="2" ry="2" height="19" width="0" data-target-w="232.33" data-target-x="183.67"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="423" rx="2" ry="2" height="19" width="4.38"></rect>
+        <rect class="f3-seg f3-inter" x="100.38" y="423" rx="2" ry="2" height="19" width="83.29"></rect>
+        <rect class="f3-seg f3-arm"   x="183.67" y="423" rx="2" ry="2" height="19" width="232.33"></rect>
         <text class="f3-row-label" x="422.0" y="436.5">n=73 · 32.6 Mb</text>
       </g><g class="f3-row" data-cohort="OV" data-class="homdel" data-n="8" data-med="5.81" data-focal="25.0" data-inter="75.0" data-arm="0.0">
         <rect class="f3-hit" x="582" y="421" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="423" rx="2" ry="2" height="19" width="0" data-target-w="80.00"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="423" rx="2" ry="2" height="19" width="0" data-target-w="240.00" data-target-x="666.00"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="423" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="423" rx="2" ry="2" height="19" width="80.00"></rect>
+        <rect class="f3-seg f3-inter" x="666.00" y="423" rx="2" ry="2" height="19" width="240.00"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="423" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="436.5">n=8 · 5.8 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="459.5" text-anchor="end">LIHC</text>
       <g class="f3-row" data-cohort="LIHC" data-class="hetdel" data-n="49" data-med="30.89" data-focal="10.2" data-inter="26.5" data-arm="63.3">
         <rect class="f3-hit" x="92" y="444" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="446" rx="2" ry="2" height="19" width="0" data-target-w="32.65"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="446" rx="2" ry="2" height="19" width="0" data-target-w="84.90" data-target-x="128.65"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="446" rx="2" ry="2" height="19" width="0" data-target-w="202.45" data-target-x="213.55"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="446" rx="2" ry="2" height="19" width="32.65"></rect>
+        <rect class="f3-seg f3-inter" x="128.65" y="446" rx="2" ry="2" height="19" width="84.90"></rect>
+        <rect class="f3-seg f3-arm"   x="213.55" y="446" rx="2" ry="2" height="19" width="202.45"></rect>
         <text class="f3-row-label" x="422.0" y="459.5">n=49 · 30.9 Mb</text>
       </g><g class="f3-row" data-cohort="LIHC" data-class="homdel" data-n="7" data-med="2.83" data-focal="57.1" data-inter="42.9" data-arm="0.0">
         <rect class="f3-hit" x="582" y="444" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="446" rx="2" ry="2" height="19" width="0" data-target-w="182.86"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="446" rx="2" ry="2" height="19" width="0" data-target-w="137.14" data-target-x="768.86"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="446" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="446" rx="2" ry="2" height="19" width="182.86"></rect>
+        <rect class="f3-seg f3-inter" x="768.86" y="446" rx="2" ry="2" height="19" width="137.14"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="446" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="459.5">n=7 · 2.8 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="482.5" text-anchor="end">KIRP</text>
       <g class="f3-row" data-cohort="KIRP" data-class="hetdel" data-n="30" data-med="44.77" data-focal="6.7" data-inter="13.3" data-arm="80.0">
         <rect class="f3-hit" x="92" y="467" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="469" rx="2" ry="2" height="19" width="0" data-target-w="21.33"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="469" rx="2" ry="2" height="19" width="0" data-target-w="42.67" data-target-x="117.33"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="469" rx="2" ry="2" height="19" width="0" data-target-w="256.00" data-target-x="160.00"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="469" rx="2" ry="2" height="19" width="21.33"></rect>
+        <rect class="f3-seg f3-inter" x="117.33" y="469" rx="2" ry="2" height="19" width="42.67"></rect>
+        <rect class="f3-seg f3-arm"   x="160.00" y="469" rx="2" ry="2" height="19" width="256.00"></rect>
         <text class="f3-row-label" x="422.0" y="482.5">n=30 · 44.8 Mb</text>
       </g><g class="f3-row" data-cohort="KIRP" data-class="homdel" data-n="5" data-med="1.49" data-focal="100.0" data-inter="0.0" data-arm="0.0">
         <rect class="f3-hit" x="582" y="467" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="586" y="469" rx="2" ry="2" height="19" width="0" data-target-w="320.00"></rect>
-        <rect class="f3-seg f3-inter" x="586" y="469" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
-        <rect class="f3-seg f3-arm"   x="586" y="469" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="906.00"></rect>
+        <rect class="f3-seg f3-focal" x="586"   y="469" rx="2" ry="2" height="19" width="320.00"></rect>
+        <rect class="f3-seg f3-inter" x="906.00" y="469" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-arm"   x="906.00" y="469" rx="2" ry="2" height="19" width="0.00"></rect>
         <text class="f3-row-label" x="912.0" y="482.5">n=5 · 1.5 Mb</text>
       </g>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="505.5" text-anchor="end">KICH</text>
       <g class="f3-row" data-cohort="KICH" data-class="hetdel" data-n="13" data-med="140.15" data-focal="0.0" data-inter="0.0" data-arm="100.0">
         <rect class="f3-hit" x="92" y="490" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="492" rx="2" ry="2" height="19" width="0" data-target-w="0.00"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="492" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="96.00"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="492" rx="2" ry="2" height="19" width="0" data-target-w="320.00" data-target-x="96.00"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="492" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-inter" x="96.00" y="492" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-arm"   x="96.00" y="492" rx="2" ry="2" height="19" width="320.00"></rect>
         <text class="f3-row-label" x="422.0" y="505.5">n=13 · 140.1 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="505.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="528.5" text-anchor="end">KIRC</text>
       <g class="f3-row" data-cohort="KIRC" data-class="hetdel" data-n="44" data-med="140.15" data-focal="0.0" data-inter="2.3" data-arm="97.7">
         <rect class="f3-hit" x="92" y="513" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="515" rx="2" ry="2" height="19" width="0" data-target-w="0.00"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="515" rx="2" ry="2" height="19" width="0" data-target-w="7.27" data-target-x="96.00"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="515" rx="2" ry="2" height="19" width="0" data-target-w="312.73" data-target-x="103.27"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="515" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-inter" x="96.00" y="515" rx="2" ry="2" height="19" width="7.27"></rect>
+        <rect class="f3-seg f3-arm"   x="103.27" y="515" rx="2" ry="2" height="19" width="312.73"></rect>
         <text class="f3-row-label" x="422.0" y="528.5">n=44 · 140.1 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="528.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="551.5" text-anchor="end">ACC</text>
       <g class="f3-row" data-cohort="ACC" data-class="hetdel" data-n="27" data-med="39.12" data-focal="0.0" data-inter="7.4" data-arm="92.6">
         <rect class="f3-hit" x="92" y="536" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="538" rx="2" ry="2" height="19" width="0" data-target-w="0.00"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="538" rx="2" ry="2" height="19" width="0" data-target-w="23.70" data-target-x="96.00"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="538" rx="2" ry="2" height="19" width="0" data-target-w="296.30" data-target-x="119.70"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="538" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-inter" x="96.00" y="538" rx="2" ry="2" height="19" width="23.70"></rect>
+        <rect class="f3-seg f3-arm"   x="119.70" y="538" rx="2" ry="2" height="19" width="296.30"></rect>
         <text class="f3-row-label" x="422.0" y="551.5">n=27 · 39.1 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="551.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="574.5" text-anchor="end">COAD</text>
       <g class="f3-row" data-cohort="COAD" data-class="hetdel" data-n="11" data-med="24.75" data-focal="27.3" data-inter="18.2" data-arm="54.5">
         <rect class="f3-hit" x="92" y="559" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="561" rx="2" ry="2" height="19" width="0" data-target-w="87.27"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="561" rx="2" ry="2" height="19" width="0" data-target-w="58.18" data-target-x="183.27"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="561" rx="2" ry="2" height="19" width="0" data-target-w="174.55" data-target-x="241.45"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="561" rx="2" ry="2" height="19" width="87.27"></rect>
+        <rect class="f3-seg f3-inter" x="183.27" y="561" rx="2" ry="2" height="19" width="58.18"></rect>
+        <rect class="f3-seg f3-arm"   x="241.45" y="561" rx="2" ry="2" height="19" width="174.55"></rect>
         <text class="f3-row-label" x="422.0" y="574.5">n=11 · 24.7 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="574.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="597.5" text-anchor="end">PRAD</text>
       <g class="f3-row" data-cohort="PRAD" data-class="hetdel" data-n="20" data-med="23.41" data-focal="15.0" data-inter="40.0" data-arm="45.0">
         <rect class="f3-hit" x="92" y="582" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="584" rx="2" ry="2" height="19" width="0" data-target-w="48.00"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="584" rx="2" ry="2" height="19" width="0" data-target-w="128.00" data-target-x="144.00"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="584" rx="2" ry="2" height="19" width="0" data-target-w="144.00" data-target-x="272.00"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="584" rx="2" ry="2" height="19" width="48.00"></rect>
+        <rect class="f3-seg f3-inter" x="144.00" y="584" rx="2" ry="2" height="19" width="128.00"></rect>
+        <rect class="f3-seg f3-arm"   x="272.00" y="584" rx="2" ry="2" height="19" width="144.00"></rect>
         <text class="f3-row-label" x="422.0" y="597.5">n=20 · 23.4 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="597.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="620.5" text-anchor="end">CESC</text>
       <g class="f3-row" data-cohort="CESC" data-class="hetdel" data-n="23" data-med="39.12" data-focal="0.0" data-inter="13.0" data-arm="87.0">
         <rect class="f3-hit" x="92" y="605" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="607" rx="2" ry="2" height="19" width="0" data-target-w="0.00"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="607" rx="2" ry="2" height="19" width="0" data-target-w="41.74" data-target-x="96.00"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="607" rx="2" ry="2" height="19" width="0" data-target-w="278.26" data-target-x="137.74"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="607" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-inter" x="96.00" y="607" rx="2" ry="2" height="19" width="41.74"></rect>
+        <rect class="f3-seg f3-arm"   x="137.74" y="607" rx="2" ry="2" height="19" width="278.26"></rect>
         <text class="f3-row-label" x="422.0" y="620.5">n=23 · 39.1 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="620.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="643.5" text-anchor="end">UCS</text>
       <g class="f3-row" data-cohort="UCS" data-class="hetdel" data-n="6" data-med="35.34" data-focal="0.0" data-inter="0.0" data-arm="100.0">
         <rect class="f3-hit" x="92" y="628" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="630" rx="2" ry="2" height="19" width="0" data-target-w="0.00"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="630" rx="2" ry="2" height="19" width="0" data-target-w="0.00" data-target-x="96.00"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="630" rx="2" ry="2" height="19" width="0" data-target-w="320.00" data-target-x="96.00"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="630" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-inter" x="96.00" y="630" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-arm"   x="96.00" y="630" rx="2" ry="2" height="19" width="320.00"></rect>
         <text class="f3-row-label" x="422.0" y="643.5">n=6 · 35.3 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="643.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="666.5" text-anchor="end">UCEC</text>
       <g class="f3-row" data-cohort="UCEC" data-class="hetdel" data-n="24" data-med="114.80" data-focal="4.2" data-inter="12.5" data-arm="83.3">
         <rect class="f3-hit" x="92" y="651" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="653" rx="2" ry="2" height="19" width="0" data-target-w="13.33"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="653" rx="2" ry="2" height="19" width="0" data-target-w="40.00" data-target-x="109.33"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="653" rx="2" ry="2" height="19" width="0" data-target-w="266.67" data-target-x="149.33"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="653" rx="2" ry="2" height="19" width="13.33"></rect>
+        <rect class="f3-seg f3-inter" x="109.33" y="653" rx="2" ry="2" height="19" width="40.00"></rect>
+        <rect class="f3-seg f3-arm"   x="149.33" y="653" rx="2" ry="2" height="19" width="266.67"></rect>
         <text class="f3-row-label" x="422.0" y="666.5">n=24 · 114.8 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="666.5">no data</text>
     </g><g class="f3-cohort-row">
       <text class="cohort-label" x="86" y="689.5" text-anchor="end">THCA</text>
       <g class="f3-row" data-cohort="THCA" data-class="hetdel" data-n="6" data-med="104.13" data-focal="0.0" data-inter="16.7" data-arm="83.3">
         <rect class="f3-hit" x="92" y="674" width="428" height="23"></rect>
-        <rect class="f3-seg f3-focal" x="96" y="676" rx="2" ry="2" height="19" width="0" data-target-w="0.00"></rect>
-        <rect class="f3-seg f3-inter" x="96" y="676" rx="2" ry="2" height="19" width="0" data-target-w="53.33" data-target-x="96.00"></rect>
-        <rect class="f3-seg f3-arm"   x="96" y="676" rx="2" ry="2" height="19" width="0" data-target-w="266.67" data-target-x="149.33"></rect>
+        <rect class="f3-seg f3-focal" x="96"   y="676" rx="2" ry="2" height="19" width="0.00"></rect>
+        <rect class="f3-seg f3-inter" x="96.00" y="676" rx="2" ry="2" height="19" width="53.33"></rect>
+        <rect class="f3-seg f3-arm"   x="149.33" y="676" rx="2" ry="2" height="19" width="266.67"></rect>
         <text class="f3-row-label" x="422.0" y="689.5">n=6 · 104.1 Mb</text>
       </g><text class="f3-nodata" x="746.0" y="689.5">no data</text>
     </g>
