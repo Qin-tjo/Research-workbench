@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 from typing import List, Optional, Tuple
 
-from app.analysis import (
+from app.pipeline.analysis import (
     Analysis,
     ArticleSummary,
     SynthesisResult,
