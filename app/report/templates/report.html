@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OncoLit — {{ query }}</title>
+<style>
+  :root { --fg:#111827; --muted:#6b7280; --line:#e5e7eb; --accent:#2563eb; --bg:#fff;
+          --soft:#f9fafb; }
+  * { box-sizing: border-box; }
+  body { font: 16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+         color: var(--fg); background: var(--bg); margin: 0; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 32px 24px 80px; }
+  header h1 { font-size: .95rem; color: var(--muted); font-weight: 600; margin: 0 0 4px; }
+  header .q { font-size: 1.6rem; font-weight: 700; margin: 0 0 10px; line-height: 1.25; }
+  .meta { color: var(--muted); font-size: .85rem; border-bottom: 1px solid var(--line);
+          padding-bottom: 14px; }
+  .meta span { margin-right: 14px; }
+  h2 { font-size: 1.25rem; margin: 36px 0 12px; padding-bottom: 6px;
+       border-bottom: 2px solid var(--line); }
+  h3.theme { font-size: 1.05rem; margin: 22px 0 6px; }
+  .warn { background:#fef3c7; border:1px solid #fde68a; padding:9px 13px; border-radius:8px;
+          font-size:.85rem; margin:10px 0 0; }
+  .exec { background: var(--soft); border:1px solid var(--line); border-radius:12px;
+          padding: 16px 20px; }
+  .exec ul { margin: 0; padding-left: 20px; }
+  .exec li { margin: 7px 0; }
+  .synthesis p { margin: 0 0 12px; }
+  a.cite { color: var(--accent); text-decoration: none; font-weight: 600; font-size:.82em;
+           vertical-align: super; }
+  a.cite:hover { text-decoration: underline; }
+  .card { border:1px solid var(--line); border-radius:10px; padding:15px 16px; margin:12px 0; }
+  .card h3 { margin:0 0 5px; font-size:1rem; line-height:1.35; }
+  .card h3 a { color: var(--fg); text-decoration: none; }
+  .card h3 a:hover { color: var(--accent); }
+  .card .sub { color: var(--muted); font-size:.83rem; margin-bottom:8px; }
+  .card p { margin: 0; }
+  .badge { display:inline-block; font-size:.7rem; font-weight:600; padding:2px 8px;
+           border-radius:999px; margin-left:6px; white-space:nowrap; }
+  .badge.full { background:#dcfce7; color:#166534; }
+  .badge.abstract { background:#fef3c7; color:#92400e; }
+  .badge.title { background:#fee2e2; color:#991b1b; }
+  .badge.conf { background:#ede9fe; color:#5b21b6; }
+  .num { color: var(--muted); font-weight:600; margin-right:6px; }
+  table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+  caption { text-align:left; color:var(--muted); font-size:.85rem; margin-bottom:8px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line);
+           vertical-align: top; }
+  th { cursor: pointer; user-select: none; background:var(--soft); }
+  .table-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:10px; }
+  details.more { margin-top:8px; }
+  details.more summary { cursor:pointer; font-weight:600; }
+  ul.compact { list-style:none; padding:0; margin:12px 0 0; }
+  ul.compact li { padding:7px 0; border-bottom:1px solid var(--line); font-size:.88rem; }
+  ul.compact .src { color:var(--muted); font-size:.8rem; }
+  footer { margin-top:44px; padding-top:16px; border-top:1px solid var(--line);
+           color: var(--muted); font-size:.8rem; }
+  .refs li { margin-bottom:6px; font-size:.84rem; }
+  /* Interactive toolbar */
+  .toolbar { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.95);
+             backdrop-filter: blur(6px); border-bottom: 1px solid var(--line);
+             padding: 10px 0; margin: 0 0 6px; }
+  .toolnav a { color: var(--muted); text-decoration: none; font-size:.82rem; margin-right:14px; }
+  .toolnav a:hover { color: var(--accent); }
+  #filter { width: 100%; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px;
+            font: inherit; margin: 9px 0 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: .76rem; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px;
+          background: var(--soft); cursor: pointer; user-select: none; }
+  .chip[aria-pressed="false"] { opacity: .4; text-decoration: line-through; }
+  .filtered-out { display: none !important; }
+  #filter-count { color: var(--muted); font-size: .8rem; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>OncoLit — oncology literature summary</h1>
+    <p class="q">{{ query }}</p>
+    <div class="meta">
+      {% if coverage %}<span><strong>{{ coverage.total }}</strong> results</span>
+      <span><strong>{{ cards|length }}</strong> analyzed</span>
+      {% if coverage.year_min %}<span>{{ coverage.year_min }}–{{ coverage.year_max }}</span>{% endif %}{% endif %}
+      <span>{{ generated_at }}</span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <nav class="toolnav">
+      {% if exec_summary %}<a href="#sec-summary">Summary</a>{% endif %}
+      {% if themes %}<a href="#sec-synthesis">Synthesis</a>{% endif %}
+      <a href="#sec-papers">Papers</a>
+      {% if table %}<a href="#sec-table">Table</a>{% endif %}
+      {% if additional %}<a href="#sec-more">More</a>{% endif %}
+    </nav>
+    <input id="filter" type="search" placeholder="Filter papers by keyword, title, author, venue…">
+    {% if sources %}
+    <div class="chips" id="source-chips">
+      {% for s in sources %}<span class="chip" data-source="{{ s }}" aria-pressed="true">{{ s }}</span>{% endfor %}
+    </div>
+    {% endif %}
+    <span id="filter-count"></span>
+  </div>
+
+  {% for w in warnings %}<div class="warn">{{ w }}</div>{% endfor %}
+
+  {% if exec_summary %}
+  <section id="sec-summary">
+    <h2>Key findings</h2>
+    <div class="exec"><ul>{% for b in exec_summary %}<li>{{ b | safe }}</li>{% endfor %}</ul></div>
+  </section>
+  {% endif %}
+
+  {% if themes %}
+  <section id="sec-synthesis" class="synthesis">
+    <h2>Synthesis</h2>
+    {% for t in themes %}
+      <h3 class="theme">{{ t.heading }}</h3>
+      {{ t.body | safe }}
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <section id="sec-papers">
+    <h2>Key papers</h2>
+    {% for c in cards %}
+    <article class="card filterable" id="art-{{ c.idx }}"
+             data-source="{{ c.article.source }}"
+             data-text="{{ (c.article.title ~ ' ' ~ (c.article.venue or '') ~ ' ' ~ c.tldr ~ ' ' ~ (c.article.authors | map(attribute='name') | join(' '))) | lower }}">
+      <h3><span class="num">[{{ c.idx }}]</span>
+        {% if c.article.url %}<a href="{{ c.article.url }}" target="_blank" rel="noopener">{{ c.article.title }}</a>
+        {% else %}{{ c.article.title }}{% endif %}
+        {% if c.based_on == "full text" %}<span class="badge full">full text</span>
+        {% elif c.based_on == "abstract" %}<span class="badge abstract">abstract</span>
+        {% else %}<span class="badge title">title only</span>{% endif %}
+        {% if c.article.is_conference %}<span class="badge conf">conference</span>{% endif %}
+      </h3>
+      <div class="sub">
+        {{ c.article.venue or "Unknown venue" }}{% if c.article.year %} · {{ c.article.year }}{% endif %}
+        {% if c.article.citation_count is not none %} · {{ c.article.citation_count }} citations{% endif %}
+        · {{ c.article.source }}
+      </div>
+      <p>{{ c.tldr }}</p>
+    </article>
+    {% endfor %}
+  </section>
+
+  {% if table %}
+  <section id="sec-table">
+    <h2>Comparison</h2>
+    <div class="table-scroll">
+      <table id="extract">
+        {% if table.caption %}<caption>{{ table.caption }}</caption>{% endif %}
+        <thead><tr>
+          <th>#</th><th>Paper</th>
+          {% for col in table.columns %}<th>{{ col.replace("_", " ") }}</th>{% endfor %}
+        </tr></thead>
+        <tbody>
+        {% for row in table.rows %}
+          <tr>
+            <td>{{ row.idx }}</td>
+            <td><a href="#art-{{ row.idx }}">{{ row.title }}</a></td>
+            {% for cell in row.cells %}<td>{{ cell }}</td>{% endfor %}
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if cards %}
+  <section>
+    <h2>References</h2>
+    <ol class="refs">
+      {% for c in cards %}
+      <li id="ref-{{ c.idx }}">
+        {{ c.article.title }}.
+        {% if c.article.venue %}<em>{{ c.article.venue }}</em>.{% endif %}
+        {% if c.article.year %}{{ c.article.year }}.{% endif %}
+        {% if c.article.url %}<a href="{{ c.article.url }}" target="_blank" rel="noopener">{{ c.article.url }}</a>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  {% if additional %}
+  <section id="sec-more">
+    <h2>Additional references ({{ additional_total }})</h2>
+    <details class="more">
+      <summary>Show {{ additional|length }} more (discovery — not analyzed in depth)</summary>
+      <ul class="compact">
+        {% for a in additional %}
+        <li class="filterable" data-source="{{ a.source }}"
+            data-text="{{ (a.title ~ ' ' ~ (a.venue or '')) | lower }}">
+          {% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title }}</a>
+          {% else %}{{ a.title }}{% endif %}
+          {% if a.is_conference %}<span class="badge conf">conference</span>{% endif %}
+          <span class="src">— {{ a.venue or "n/a" }}{% if a.year %}, {{ a.year }}{% endif %} · {{ a.source }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% if additional_total > additional|length %}
+      <p class="src">+{{ additional_total - additional|length }} further results not shown.</p>
+      {% endif %}
+    </details>
+  </section>
+  {% endif %}
+
+  <footer>
+    Generated by OncoLit{% if model_note %} ({{ model_note }}){% endif %}.
+    Summaries are drawn only from the text retrieved for each paper (full text where open
+    access, otherwise the abstract); points not stated in that text are omitted or marked.
+    Verify all findings against the linked primary sources before use.
+  </footer>
+</div>
+
+<script>
+// Column sorting for the optional comparison table.
+document.querySelectorAll('#extract th').forEach(function (th, col) {
+  th.addEventListener('click', function () {
+    var tbody = th.closest('table').querySelector('tbody');
+    var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+    var asc = !(th.dataset.asc === 'true');
+    th.dataset.asc = asc;
+    rows.sort(function (a, b) {
+      var x = a.children[col].innerText.trim(), y = b.children[col].innerText.trim();
+      var nx = parseFloat(x), ny = parseFloat(y);
+      if (!isNaN(nx) && !isNaN(ny)) return asc ? nx - ny : ny - nx;
+      return asc ? x.localeCompare(y) : y.localeCompare(x);
+    });
+    rows.forEach(function (r) { tbody.appendChild(r); });
+  });
+});
+
+// Live filtering: keyword box + source chips filter every .filterable element.
+(function () {
+  var input = document.getElementById('filter');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#source-chips .chip'));
+  var items = Array.prototype.slice.call(document.querySelectorAll('.filterable'));
+  var count = document.getElementById('filter-count');
+  var off = {};
+  function apply() {
+    var q = (input && input.value || '').trim().toLowerCase(), shown = 0;
+    items.forEach(function (el) {
+      var ok = !off[el.getAttribute('data-source')] &&
+               (q === '' || (el.getAttribute('data-text') || '').indexOf(q) !== -1);
+      el.classList.toggle('filtered-out', !ok);
+      if (ok) shown++;
+    });
+    if (count) count.textContent = (q || Object.keys(off).length) ? shown + ' shown' : '';
+  }
+  if (input) input.addEventListener('input', apply);
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var on = chip.getAttribute('aria-pressed') !== 'false';
+      chip.setAttribute('aria-pressed', String(!on));
+      off[chip.getAttribute('data-source')] = on;
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>

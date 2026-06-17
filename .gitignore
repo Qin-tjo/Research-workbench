@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.env
+*.db
+.cache/
+.pytest_cache/
+.ruff_cache/
+node_modules/
+.DS_Store
+reports/
+runs/
+*.run.json
+*.analysis.json
+
+# Local data caches (regenerable; large — pan-TCGA ABSOLUTE, recount3, MC3, etc.)
+app/target_intel/cache/
+app/*/cache/
+
+# Claude Code per-task plan scratch space
+.claude/plans/
+.claude/settings.local.json

@@ -1,0 +1,482 @@
+# Citation database for the Target Intelligence dashboard.
+# Every claim that appears in any panel must trace to a citation key here.
+# Keys are short, all-lowercase, FirstAuthorLastNameYear, with a letter suffix
+# only if needed for disambiguation.
+#
+# Each entry includes a stable URL (PubMed preferred; DOI when PubMed n/a)
+# for embedding in the final HTML.
+
+# =============================================================================
+# Foundational mechanism — MTAP/PRMT5 synthetic-lethality "trilogy" (Jan 2016)
+# =============================================================================
+
+kryukov2016:
+  authors:  "Kryukov GV, Wilson FH, Ruth JR, Riggi G, Adamopoulos P, Murphy DJ, Walker EJ, Whittaker JW, Watson JS, et al."
+  title:    "MTAP deletion confers enhanced dependency on the PRMT5 arginine methyltransferase in cancer cells"
+  journal:  "Science"
+  year:     2016
+  volume:   "351"
+  pages:    "1214-1218"
+  doi:      "10.1126/science.aad5214"
+  pmid:     26912360
+  url:      "https://pubmed.ncbi.nlm.nih.gov/26912360/"
+  note:     "Genome-scale CRISPR screen identifies MTAP-loss → PRMT5 dependency; demonstrates MTA accumulation and partial PRMT5 inhibition."
+
+mavrakis2016:
+  authors:  "Mavrakis KJ, McDonald ER 3rd, Schlabach MR, Billy E, Hoffman GR, deWeck A, Ruddy DA, Venkatesan K, Yu J, et al."
+  title:    "Disordered methionine metabolism in MTAP/CDKN2A-deleted cancers leads to dependence on PRMT5"
+  journal:  "Science"
+  year:     2016
+  volume:   "351"
+  pages:    "1208-1213"
+  doi:      "10.1126/science.aad5944"
+  pmid:     26912361
+  url:      "https://pubmed.ncbi.nlm.nih.gov/26912361/"
+  note:     "Parallel discovery via RNAi screen; quantifies MTA accumulation in MTAP-null cells and links to PRMT5 substrate specificity."
+
+marjon2016:
+  authors:  "Marjon K, Cameron MJ, Quang P, Clasquin MF, Mandley E, Kunii K, McVay M, Choe S, Kernytsky A, et al."
+  title:    "MTAP Deletions in Cancer Create Vulnerability to Targeting of the MAT2A/PRMT5/RIOK1 Axis"
+  journal:  "Cell Reports"
+  year:     2016
+  volume:   "15"
+  pages:    "574-587"
+  doi:      "10.1016/j.celrep.2016.03.043"
+  pmid:     27068473
+  url:      "https://pubmed.ncbi.nlm.nih.gov/27068473/"
+  note:     "Extends the synthetic lethality to MAT2A (upstream SAM producer) and RIOK1 (PRMT5 downstream effector); defines the targetable axis."
+
+# =============================================================================
+# Mechanism extension — MAT2A inhibitor era
+# =============================================================================
+
+kalev2021:
+  authors:  "Kalev P, Hyer ML, Gross S, Konteatis Z, Chen CC, Fletcher M, Lein M, Aguado-Fraile E, et al."
+  title:    "MAT2A Inhibition Blocks the Growth of MTAP-Deleted Cancer Cells by Reducing PRMT5-Dependent mRNA Splicing and Inducing DNA Damage"
+  journal:  "Cancer Cell"
+  year:     2021
+  volume:   "39"
+  pages:    "209-224.e11"
+  doi:      "10.1016/j.ccell.2020.12.010"
+  pmid:     33476604
+  url:      "https://pubmed.ncbi.nlm.nih.gov/33476604/"
+  note:     "AG-270 (now superseded by IDE397). Establishes that MAT2A inhibition lowers SAM → further suppresses already-impaired PRMT5 in MTAP-null cells; defines splicing-dependent and DNA-damage downstream consequences."
+
+# =============================================================================
+# Foundational PRMT5 biology (substrate specificity, methylation marks)
+# =============================================================================
+
+stopa2015:
+  authors:  "Stopa N, Krebs JE, Shechter D"
+  title:    "The PRMT5 arginine methyltransferase: many roles in development, cancer and beyond"
+  journal:  "Cellular and Molecular Life Sciences"
+  year:     2015
+  volume:   "72"
+  pages:    "2041-2059"
+  doi:      "10.1007/s00018-015-1847-9"
+  pmid:     25662273
+  url:      "https://pubmed.ncbi.nlm.nih.gov/25662273/"
+  note:     "Canonical review of PRMT5 substrates (Sm proteins, H4R3, H3R2/8) and cellular roles. Used for substrate biology background."
+
+# =============================================================================
+# Genomic resources used in Panel 1 — for the audit log of every claim
+# =============================================================================
+
+taylor2018:
+  authors:  "Taylor AM, Shih J, Ha G, Gao GF, Zhang X, Berger AC, Schumacher SE, Wang C, Hu H, et al."
+  title:    "Genomic and Functional Approaches to Understanding Cancer Aneuploidy"
+  journal:  "Cancer Cell"
+  year:     2018
+  volume:   "33"
+  pages:    "676-689.e3"
+  doi:      "10.1016/j.ccell.2018.03.007"
+  pmid:     29622463
+  url:      "https://pubmed.ncbi.nlm.nih.gov/29622463/"
+  note:     "PanCanAtlas ABSOLUTE re-calling. Source for all integer allelic CN used in Stages 1, 2, 3A, 4."
+
+ellrott2018:
+  authors:  "Ellrott K, Bailey MH, Saksena G, Covington KR, Kandoth C, Stewart C, Hess J, Ma S, Chiotti KE, et al. (MC3 Working Group)"
+  title:    "Scalable Open Science Approach for Mutation Calling of Tumor Exomes Using Multiple Genomic Pipelines"
+  journal:  "Cell Systems"
+  year:     2018
+  volume:   "6"
+  pages:    "271-281.e7"
+  doi:      "10.1016/j.cels.2018.03.002"
+  pmid:     29596782
+  url:      "https://pubmed.ncbi.nlm.nih.gov/29596782/"
+  note:     "MC3 public MAF. Source for somatic mutation calls used in Stage 3 / 3B."
+
+bailey2018:
+  authors:  "Bailey MH, Tokheim C, Porta-Pardo E, Sengupta S, Bertrand D, Weerasinghe A, Colaprico A, Wendl MC, Kim J, et al."
+  title:    "Comprehensive Characterization of Cancer Driver Genes and Mutations"
+  journal:  "Cell"
+  year:     2018
+  volume:   "173"
+  pages:    "371-385.e18"
+  doi:      "10.1016/j.cell.2018.02.060"
+  pmid:     29625053
+  url:      "https://pubmed.ncbi.nlm.nih.gov/29625053/"
+  note:     "PanCanAtlas consensus driver gene list. Conceptual basis for the driver-gene whitelist; we operationally use OncoKB which subsumes this set."
+
+wilks2021:
+  authors:  "Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling JP, Imada EL, Zhang D, Joseph L, et al."
+  title:    "recount3: summaries and queries for large-scale RNA-seq expression and splicing"
+  journal:  "Genome Biology"
+  year:     2021
+  volume:   "22"
+  pages:    "323"
+  doi:      "10.1186/s13059-021-02533-6"
+  pmid:     34844637
+  url:      "https://pubmed.ncbi.nlm.nih.gov/34844637/"
+  note:     "Uniformly-reprocessed TCGA RNA-seq used in Stage 2."
+
+chakravarty2017:
+  authors:  "Chakravarty D, Gao J, Phillips SM, Kundra R, Zhang H, Wang J, Rudolph JE, Yaeger R, et al."
+  title:    "OncoKB: A Precision Oncology Knowledge Base"
+  journal:  "JCO Precision Oncology"
+  year:     2017
+  volume:   "2017"
+  pages:    "PO.17.00011"
+  doi:      "10.1200/PO.17.00011"
+  pmid:     28890946
+  url:      "https://pubmed.ncbi.nlm.nih.gov/28890946/"
+  note:     "OncoKB cancer gene list used as the driver whitelist in Stage 3 / 3B."
+
+cerami2012:
+  authors:  "Cerami E, Gao J, Dogrusoz U, Gross BE, Sumer SO, Aksoy BA, Jacobsen A, Byrne CJ, Heuer ML, et al."
+  title:    "The cBio cancer genomics portal: an open platform for exploring multidimensional cancer genomics data"
+  journal:  "Cancer Discovery"
+  year:     2012
+  volume:   "2"
+  pages:    "401-404"
+  doi:      "10.1158/2159-8290.CD-12-0095"
+  pmid:     22588877
+  url:      "https://pubmed.ncbi.nlm.nih.gov/22588877/"
+  note:     "cBioPortal — used in Stage 5 to fetch MSK-IMPACT."
+
+# =============================================================================
+# Clinical-stage MTA-cooperative PRMT5 inhibitors (2023–2025 publications)
+# =============================================================================
+
+engstrom2023:
+  authors:  "Engstrom LD, Aranda R, Waters L, Moya K, Bowcut V, Vegar L, Trinh D, Hebbert A, Smith CR, et al."
+  title:    "MRTX1719 Is an MTA-Cooperative PRMT5 Inhibitor That Exhibits Synthetic Lethality in Preclinical Models and Patients with MTAP-Deleted Cancer"
+  journal:  "Cancer Discovery"
+  year:     2023
+  volume:   "13"
+  pages:    "2412-2431"
+  doi:      "10.1158/2159-8290.CD-23-0669"
+  pmid:     37552839
+  url:      "https://pubmed.ncbi.nlm.nih.gov/37552839/"
+  note:     "Mirati Therapeutics MRTX1719 (now BMS-986504 / navlimetostat) — preclinical characterisation and first-patient signals. Demonstrates >70-fold selectivity for MTAP-null over MTAP-WT cells."
+
+belmontes2025:
+  authors:  "Belmontes B, Wong T, Tarapore RS, Cheng Y, Sun X, et al."
+  title:    "AMG 193, a Clinical Stage MTA-Cooperative PRMT5 Inhibitor, Drives Antitumor Activity Preclinically and in Patients with MTAP-Deleted Cancers"
+  journal:  "Cancer Discovery"
+  year:     2025
+  volume:   "15"
+  pages:    "139-161"
+  doi:      "10.1158/2159-8290.CD-24-0887"
+  pmid:     39282709
+  url:      "https://pubmed.ncbi.nlm.nih.gov/39282709/"
+  note:     "Amgen AMG 193 preclinical + early clinical paper. Translates selective PRMT5-MTA binding into patient activity across multiple tumour types."
+
+rodon2024:
+  authors:  "Rodon J, Prenen H, Sacher A, Villalona-Calero MA, Penel N, El Helali A, Rottey S, Becerra C, Yamamoto N, et al."
+  title:    "First-in-human study of AMG 193, an MTA-cooperative PRMT5 inhibitor, in patients with MTAP-deleted solid tumors: results from phase I dose exploration"
+  journal:  "Annals of Oncology"
+  year:     2024
+  volume:   "35"
+  pages:    "1138-1147"
+  doi:      "10.1016/j.annonc.2024.08.2339"
+  pmid:     null
+  url:      "https://doi.org/10.1016/j.annonc.2024.08.2339"
+  note:     "AMG 193 first-in-human phase I dose exploration (ESMO 2024 concomitant publication). Reports partial responses across esophageal, pancreatic, renal, gallbladder, and ovarian Sertoli-Leydig cell cancer; complete tumour SDMA inhibition at ≥480 mg dose."
+
+cottrell2024:
+  authors:  "Cottrell KM, Briggs KJ, Whittington DA, Jahić H, Ali JA, Chen CH, Donaldson JJ, Eisele LE, Engstrom LD, et al."
+  title:    "Discovery of TNG908: A Selective, Brain Penetrant, MTA-Cooperative PRMT5 Inhibitor That Is Synthetically Lethal with MTAP-Deleted Cancers"
+  journal:  "Journal of Medicinal Chemistry"
+  year:     2024
+  volume:   "67"
+  pages:    "6064-6080"
+  doi:      "10.1021/acs.jmedchem.4c00133"
+  pmid:     null
+  url:      "https://doi.org/10.1021/acs.jmedchem.4c00133"
+  note:     "Tango Therapeutics TNG908 discovery paper. Brain-penetrant MTA-cooperative PRMT5 inhibitor with 15× selectivity for MTAP-null cells; supports development in CNS malignancies. Note: company has since prioritised the follow-on TNG462 (vopimetostat) over TNG908."
+
+# ASCO / AACR 2025 conference abstracts — clinical readouts for clinical-stage agents
+bms986504_asco2025:
+  authors:  "George B, Henry JT, Rodon J, et al."
+  title:    "BMS-986504 in patients with advanced solid tumors with homozygous MTAP deletion: Clinical update and first report of pharmacokinetics and pharmacodynamic analyses from CA240-0007"
+  journal:  "Journal of Clinical Oncology (ASCO Annual Meeting Abstract)"
+  year:     2025
+  volume:   "43"
+  pages:    "abstract 3011 (16_suppl)"
+  doi:      "10.1200/JCO.2025.43.16_suppl.3011"
+  pmid:     null
+  url:      "https://ascopubs.org/doi/10.1200/JCO.2025.43.16_suppl.3011"
+  note:     "BMS-986504 (formerly MRTX1719 / navlimetostat) ASCO 2025 clinical update for the CA240-0007 phase I/II trial. PK + PD biomarkers in MTAP-deleted patients."
+
+bms986504_aacr2025:
+  authors:  "Rodón J, Simpson T, George B, et al."
+  title:    "Pharmacodynamic and exploratory biomarker analysis of the PRMT5 inhibitor BMS-986504 in patients with advanced solid tumors with homozygous MTAP deletion"
+  journal:  "Cancer Research (AACR Annual Meeting Abstract)"
+  year:     2025
+  volume:   "85 (8 Supplement 2)"
+  pages:    "abstract CT079"
+  doi:      "10.1158/1538-7445.AM2025-CT079"
+  pmid:     null
+  url:      "https://aacrjournals.org/cancerres/article/85/8_Supplement_2/CT079/761426/"
+  note:     "BMS-986504 AACR 2025 PD/biomarker readout. Companion to the ASCO 2025 clinical update."
+
+bms986504_iaslc2025:
+  authors:  "Bristol Myers Squibb (presented at IASLC World Conference on Lung Cancer 2025)"
+  title:    "BMS-986504 Demonstrates Durable Responses in MTAP-Deleted NSCLC, Including EGFR and ALK-Positive Tumors"
+  journal:  "IASLC press / WCLC 2025"
+  year:     2025
+  volume:   null
+  pages:    null
+  doi:      null
+  pmid:     null
+  url:      "https://www.iaslc.org/iaslc-news/press-release/bms-986504-demonstrates-durable-responses-mtap-deleted-nsclc-including"
+  note:     "Non-peer-reviewed conference press release — flagged as such. Reports durable responses in MTAP-deleted NSCLC including EGFR / ALK co-altered subsets. Cite cautiously; await peer-reviewed publication."
+
+tng462_clinical_2024:
+  authors:  "Tango Therapeutics, Inc."
+  title:    "TNG462 (vopimetostat) clinical update — positive Phase 1/2 data in MTAP-deleted cancers"
+  journal:  "Company press release / investor update"
+  year:     2024
+  volume:   null
+  pages:    null
+  doi:      null
+  pmid:     null
+  url:      "https://tangotx.gcs-web.com/news-releases/news-release-details/tango-therapeutics-reports-positive-data-ongoing-phase-12-study"
+  note:     "Non-peer-reviewed company disclosure. TNG462 selected as lead PRMT5 inhibitor; TNG908 enrolment discontinued to focus resources. Cite cautiously; await peer-reviewed publication."
+
+ide397_aacr2025:
+  authors:  "Konteatis Z, et al."
+  title:    "The allosteric MAT2A inhibitor IDE397 uniquely exploits metabolic liabilities associated with MTAP deletion to perturb DNA replication and repair"
+  journal:  "Cancer Research (AACR Annual Meeting Abstract)"
+  year:     2025
+  volume:   "85 (8 Supplement 1)"
+  pages:    "abstract 4268"
+  doi:      "10.1158/1538-7445.AM2025-4268"
+  pmid:     null
+  url:      "https://aacrjournals.org/cancerres/article/85/8_Supplement_1/4268/759900/"
+  note:     "IDEAYA IDE397 (MAT2A inhibitor) AACR 2025 mechanism abstract. Complements clinical reports of IDE397 + sacituzumab govitecan (Trodelvy) combination in MTAP-deleted urothelial cancer."
+
+# -------- Companion-diagnostic / detection-method comparisons --------------
+
+brune2026_mtap_ihc:
+  authors:  "Brune MM, Joerger M, Demarrer M, Savic-Prince S, Quagliata L, Hofman P, Bubendorf L, et al."
+  title:    "MTAP Expression by Immunohistochemistry: A Novel Biomarker in NSCLC"
+  journal:  "Journal of Thoracic Oncology"
+  year:     2026
+  volume:   "21"
+  pages:    "112-123"
+  doi:      "10.1016/j.jtho.2025.08.014"
+  pmid:     40850616
+  url:      "https://pubmed.ncbi.nlm.nih.gov/40850616/"
+  note:     "Head-to-head MTAP IHC vs NGS in NSCLC. IHC identified MTAP deficiency in 18.2% of cases — substantially higher than ~6% reported by OPA-NGS in matched cohorts. Attributed to MTAP not having dedicated probe coverage in the panel tested.  Also: only 28.4% of MTAP-deficient NSCLC showed CDKN2A loss on NGS, and 72.9% of CDKN2A-loss NSCLC in TCGA had concurrent MTAP loss — undermining CDKN2A as a clean surrogate."
+
+febres_aldana_2024_mtap_meso:
+  authors:  "Febres-Aldana CA, Chang JC, Jungbluth AA, Adusumilli PS, Bodd FM, Frosina D, Geronimo JA, Hernandez E, Irawan H, Offin MD, Rekhtman N, Travis WD, Vanderbilt C, Zauderer MG, Zhang Y, Ladanyi M, Yang SR, Sauter JL."
+  title:    "Comparison of Immunohistochemistry, Next-generation Sequencing and Fluorescence In Situ Hybridization for Detection of MTAP Loss in Pleural Mesothelioma"
+  journal:  "Modern Pathology"
+  year:     2024
+  volume:   "37"
+  pages:    "100420"
+  doi:      "10.1016/j.modpat.2023.100420"
+  pmid:     null
+  url:      "https://doi.org/10.1016/j.modpat.2023.100420"
+  note:     "MSK head-to-head study comparing MTAP IHC, NGS-based CN calls and FISH for detection of 9p21 / MTAP loss in 122 pleural mesotheliomas. IHC reported as more sensitive than panel-NGS for MTAP loss detection; FISH used as gold standard. Discrepancies attributed largely to low tumour purity and to NGS calling limitations with focal deletions."
+
+# -------- Completed first-generation / MAT2A trials (peer-reviewed) --------
+
+meteor1_ann_oncol_2025:
+  authors:  "Siu LL, Rasco D, Vinayak S, et al."
+  title:    "Phase Ib and dose-expansion study of GSK3326595, a PRMT5 inhibitor, as monotherapy and in combination with pembrolizumab in patients with advanced cancers (METEOR-1)"
+  journal:  "Annals of Oncology"
+  year:     2025
+  volume:   null
+  pages:    "S0923-7534(25)04696-4 (online ahead of print)"
+  doi:      "10.1016/j.annonc.2025.10.001"
+  pmid:     null
+  url:      "https://www.annalsofoncology.org/article/S0923-7534(25)04696-4/fulltext"
+  note:     "METEOR-1 (NCT02783300, GSK3326595 / pemrametostat) Ph1b mono + pembro combination. Confirmed PRs in adenoid cystic carcinoma (2/3) and ER+ breast (1), with consistent safety; broader programme paused — first-gen SAM-competitive PRMT5i has not advanced in MTAP-enrichment strategy."
+
+jnj64619178_ccr_2023:
+  authors:  "Pant S, Patel MR, Kurzrock R, et al."
+  title:    "Phase 1 Study of JNJ-64619178, a Protein Arginine Methyltransferase 5 Inhibitor, in Advanced Solid Tumors"
+  journal:  "Clinical Cancer Research"
+  year:     2023
+  volume:   "29"
+  pages:    "3592-3603"
+  doi:      "10.1158/1078-0432.CCR-23-0381"
+  pmid:     37417951
+  url:      "https://pubmed.ncbi.nlm.nih.gov/37417951/"
+  note:     "JNJ-64619178 (NCT03573310) Ph1 solid tumors / NHL. Thrombocytopenia as DLT; ORR among 90 evaluable patients ~5.6%; signal in adenoid cystic carcinoma. First-gen SAM-competitive PRMT5i."
+
+ag270_natcomm_2025:
+  authors:  "Gounder MM, Stein E, Heymach JV, et al."
+  title:    "MAT2A inhibitor AG-270/S095033 in patients with advanced malignancies: a phase I trial"
+  journal:  "Nature Communications"
+  year:     2025
+  volume:   "16"
+  pages:    "423"
+  doi:      "10.1038/s41467-024-55316-5"
+  pmid:     null
+  url:      "https://www.nature.com/articles/s41467-024-55316-5"
+  note:     "AG-270 (NCT03435250) Ph1 single agent in MTAP-deleted advanced malignancies. 40 patients treated; 2 PRs; SAM reduced up to 70%; manageable LFT elevations / thrombocytopenia. Programme since paused / superseded by IDE397."
+
+prt811_asco_2023:
+  authors:  "Wen PY, Lim M, Lassman AB, et al."
+  title:    "Phase 1 study of the PRMT5 brain-penetrant inhibitor PRT811 in patients with recurrent high-grade glioma or uveal melanoma"
+  journal:  "Journal of Clinical Oncology (ASCO Annual Meeting Abstract)"
+  year:     2023
+  volume:   "41 (16 Supplement)"
+  pages:    "3008"
+  doi:      "10.1200/JCO.2023.41.16_suppl.3008"
+  pmid:     null
+  url:      "https://ascopubs.org/doi/10.1200/JCO.2023.41.16_suppl.3008"
+  note:     "PRT811 (NCT04089449, Prelude) Ph1 brain-penetrant PRMT5i. Activity reported in IDH-mut recurrent glioma + splicing-mutant uveal melanoma. Programme since superseded by next-gen MTA-cooperative compounds."
+
+prt543_myeloid_2025:
+  authors:  "Watts JM, Carraway HE, Garcia-Manero G, et al."
+  title:    "Phase Ib study of PRT543, an oral PRMT5 inhibitor, in patients with advanced splicing factor-mutant myeloid malignancies"
+  journal:  "(peer-reviewed; full citation pending verification)"
+  year:     2025
+  volume:   null
+  pages:    null
+  doi:      null
+  pmid:     null
+  url:      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11879867/"
+  note:     "PRT543 (NCT03886831, Prelude) Ph1b in splicing-factor-mutant myeloid malignancies. RP2D 35 mg 5x/week; durable responses with manageable safety. Programme since wound down."
+
+# -------- 2026 updates -----------------------------------------------------
+
+aldea2026:
+  authors:  "Aldea M, et al."
+  title:    "MTAP Loss Is Frequent in Oncogene-Driven NSCLC and May Confer Sensitivity to Combined PRMT5 Inhibitors and Targeted Therapies"
+  journal:  "Annals of Oncology"
+  year:     2026
+  volume:   null
+  pages:    "online ahead of print (S0923-7534(26)00099-2)"
+  doi:      "10.1016/j.annonc.2026.03.001"
+  pmid:     41833902
+  url:      "https://pubmed.ncbi.nlm.nih.gov/41833902/"
+  note:     "First systematic prevalence analysis of MTAP loss in oncogene-driven NSCLC. MTAP loss in 27–33% of ALK-rearranged, 18.5–26% of RET-rearranged, 17–24% of EGFR-mutant NSCLC by NGS; ~98% CDKN2A co-deletion. Demonstrates that targeted therapy plus MTA-cooperative PRMT5 inhibition (BMS-986504) can outperform either therapy alone in EGFR/ALK models — basis for combination strategies."
+
+mountaintap30_tps_jco2026:
+  authors:  "Bristol Myers Squibb (sponsor); presented at ASCO GI 2026."
+  title:    "A phase 2/3 randomized study of BMS-986504 with nab-paclitaxel (nab-P) and gemcitabine (GEM) in first-line metastatic pancreatic ductal adenocarcinoma (PDAC) with homozygous MTAP deletion: MountainTAP-30"
+  journal:  "Journal of Clinical Oncology (ASCO GI 2026 Symposium Abstract)"
+  year:     2026
+  volume:   "44 (2 Supplement)"
+  pages:    "TPS796"
+  doi:      "10.1200/JCO.2026.44.2_suppl.TPS796"
+  pmid:     null
+  url:      "https://ascopubs.org/doi/10.1200/JCO.2026.44.2_suppl.TPS796"
+  note:     "MountainTAP-30 trial-in-progress (NCT07076121). Ph2/3 randomized trial of BMS-986504 + nab-paclitaxel + gemcitabine vs placebo + chemo, 1L MTAP-deleted metastatic PDAC."
+
+tng462_daraxonrasib_2026:
+  authors:  "Tango Therapeutics, Inc."
+  title:    "Vopimetostat (TNG462) + daraxonrasib combination — 92% ORR in MTAP-deleted, RAS-mutant pancreatic cancer (Phase 1/2 update)"
+  journal:  "Company press release"
+  year:     2026
+  volume:   null
+  pages:    null
+  doi:      null
+  pmid:     null
+  url:      "https://www.globenewswire.com/news-release/2026/06/08/3307926/0/en/tango-therapeutics-announces-combination-of-vopimetostat-and-daraxonrasib-demonstrated-92-objective-response-rate-in-pancreatic-cancer.html"
+  note:     "Non-peer-reviewed announcement (June 8, 2026). 12 evaluable PDAC patients on vopimetostat + daraxonrasib: 92% ORR (9 of 11 responses confirmed at data cut), 100% DCR, 6-month PFS 90%, median PFS not reached. KRAS-G12D restricted cohort (vopimetostat + zoldonrasib): 52% ORR / 96% DCR / 74% 6-month PFS. Toxicity grade 1–2. Phase 3 planned. Cite cautiously; await peer-reviewed publication."
+
+tng462_onclive_2025:
+  authors:  "OncLive editorial (covering Tango Therapeutics WCLC 2025 / ESMO 2025 presentations)"
+  title:    "Vopimetostat demonstrates early evidence of efficacy in MTAP-deleted solid tumors"
+  journal:  "OncLive (news / editorial summary of conference data)"
+  year:     2025
+  volume:   null
+  pages:    null
+  doi:      null
+  pmid:     null
+  url:      "https://www.onclive.com/view/vopimetostat-demonstrates-early-evidence-of-efficacy-in-mtap-deleted-solid-tumors"
+  note:     "Editorial coverage: histology-agnostic 49% ORR and 9.1-month median PFS; 2L MTAP-deleted PDAC 25% ORR, 7.2-month median PFS. Non-peer-reviewed; cite cautiously."
+
+amg193_wclc2024:
+  authors:  "Sacher A, et al."
+  title:    "Phase 1/2 Dose-expansion Study of AMG 193, an MTA-cooperative PRMT5 Inhibitor, in MTAP-deleted NSCLC (P3.12D.11)"
+  journal:  "Journal of Thoracic Oncology (WCLC 2024 Abstract)"
+  year:     2024
+  volume:   "19 (Supplement)"
+  pages:    "S1556-0864(24)01507-7"
+  doi:      "10.1016/j.jtho.2024.09.0123"
+  pmid:     null
+  url:      "https://www.jto.org/article/S1556-0864(24)01507-7/fulltext"
+  note:     "AMG 193 NSCLC-specific phase 1/2 dose-expansion data, WCLC 2024 conference abstract."
+
+ide397_press_sep2025:
+  authors:  "IDEAYA Biosciences (press release)"
+  title:    "Positive Phase 1/2 Combination Trial Data of IDE397 + Trodelvy in MTAP-Deletion Urothelial Cancer"
+  journal:  "Company press release"
+  year:     2025
+  volume:   null
+  pages:    null
+  doi:      null
+  pmid:     null
+  url:      "https://ir.ideayabio.com/2025-09-08-IDEAYA-Biosciences-Announces-Positive-Data-From-Phase-1-2-Combination-Trial-of-IDE397,-a-potential-first-in-class-MAT2A-inhibitor,-and-Trodelvy-R-in-MTAP-Deletion-Urothelial-Cancer"
+  note:     "Combination expansion (urothelial): 33% ORR at DL1 (3/9); 57% ORR at DL2 (4/7; 3 confirmed PR + 1 unconfirmed PR). Manageable safety profile. Non-peer-reviewed; cite cautiously."
+
+prmt5i_resistance_biorxiv_2026:
+  authors:  "[bioRxiv preprint authors — pending peer review]"
+  title:    "Acquired resistance to the PRMT5 inhibitor confers collateral sensitivity to MEK inhibition in MTAP-null non-small cell lung cancer"
+  journal:  "bioRxiv (preprint, not peer-reviewed)"
+  year:     2026
+  volume:   null
+  pages:    "biorxiv 2026.04.16.719008"
+  doi:      "10.64898/2026.04.16.719008"
+  pmid:     null
+  url:      "https://www.biorxiv.org/content/10.64898/2026.04.16.719008v1"
+  note:     "Preprint April 2026. Identifies acquired-resistance mechanism to MTA-cooperative PRMT5 inhibitor in MTAP-null NSCLC; resistant clones show collateral MEK-inhibitor sensitivity. Not peer-reviewed; cite cautiously."
+
+prmt5i_splicing_biorxiv_2026:
+  authors:  "[bioRxiv preprint authors — pending peer review]"
+  title:    "Identification of a lineage-agnostic splicing signature caused by PRMT5 inhibition"
+  journal:  "bioRxiv (preprint, not peer-reviewed)"
+  year:     2026
+  volume:   null
+  pages:    "biorxiv 2026.03.26.714409"
+  doi:      "10.64898/2026.03.26.714409"
+  pmid:     null
+  url:      "https://www.biorxiv.org/content/10.64898/2026.03.26.714409v1"
+  note:     "Preprint March 2026. Defines a histology-agnostic splicing signature induced by MTA-cooperative PRMT5 inhibition — potential pharmacodynamic biomarker. Not peer-reviewed; cite cautiously."
+
+lin2023_commentary:
+  authors:  "Lin H, Wang M, Zhang YW, et al."
+  title:    "Early Clinical Success of MTA-Cooperative PRMT5 Inhibitors for the Treatment of CDKN2A/MTAP-Deleted Cancers"
+  journal:  "Cancer Discovery (commentary)"
+  year:     2023
+  volume:   "13"
+  pages:    "2310-2312"
+  doi:      "10.1158/2159-8290.CD-23-1031"
+  pmid:     37909092
+  url:      "https://pubmed.ncbi.nlm.nih.gov/37909092/"
+  note:     "Commentary contextualising MRTX1719 (Engstrom 2023) and the broader MTA-cooperative PRMT5 inhibitor field. Useful as a single-link entry point for the clinical landscape."
+
+# =============================================================================
+# MTAP-CDKN2A co-deletion context (used for Stage 3A interpretation)
+# =============================================================================
+
+zhang2018:
+  authors:  "Zhang H, Chen ZH, Savarese TM"
+  title:    "Co-deletion of the genes for p16INK4, methylthioadenosine phosphorylase, interferon-alpha1, interferon-beta1, and other 9p21 markers in human malignant cell lines"
+  journal:  "Cancer Genetics and Cytogenetics"
+  year:     1996
+  volume:   "86"
+  pages:    "22-28"
+  doi:      "10.1016/0165-4608(95)00157-3"
+  pmid:     8616780
+  url:      "https://pubmed.ncbi.nlm.nih.gov/8616780/"
+  note:     "Historical paper establishing the 9p21 co-deletion footprint (CDKN2A + MTAP + IFN cluster + neighbours). Used to contextualise Stage 3A grouping."

@@ -1,0 +1,191 @@
+# Curated clinical-readout snippets, keyed by NCT id.
+# Only public data with stable citations.  Tone: hedged; non-peer-reviewed
+# data flagged as such.
+
+readouts:
+
+  # ------------------------------------------------------------------------
+  # BMS-986504 (MRTX1719 / navlimetostat) — CA240-0007 / MRTX1719-001
+  # ------------------------------------------------------------------------
+  NCT05245500:
+    headline: "MRTX1719 → BMS-986504 (navlimetostat) — currently the most advanced MTA-cooperative PRMT5i programme"
+    citation: engstrom2023
+    orr_pct: null
+    n_evaluable: null
+    orr_note: "PK/PD confirmed across cohorts; specific ORRs reported in expansion data per indication"
+    key_findings:
+      - "Preclinical work reports ~70× selectivity for MTAP-null vs MTAP-WT cells (Engstrom 2023, Cancer Discov)."
+      - "CA240-0007 phase I/II: most TRAEs grade 1–2; Grade ≥ 3 TRAEs ~13%; once-daily 400–600 mg appears tolerable on PK/PD (ASCO 2025 abstract 3011)."
+      - "Durable responses reported in MTAP-deleted NSCLC, including EGFR- and ALK-positive subsets (IASLC / WCLC 2025 update; non-peer-reviewed press)."
+      - "MTAP-loss prevalence in oncogene-driven NSCLC (~17–33% across ALK / RET / EGFR subsets) provides a rationale for driver-TKI combinations (Aldea 2026, Ann Oncol)."
+      - "Pivotal Ph2/3 trials initiated in 2025–2026 (PDAC: MountainTAP-30; NSCLC: combination with pembrolizumab + chemo)."
+    additional_citations: [bms986504_asco2025, bms986504_aacr2025, bms986504_iaslc2025, aldea2026]
+
+  # ------------------------------------------------------------------------
+  # AMG 193 — first-in-human (Rodon 2024, Ann Oncol)
+  # ------------------------------------------------------------------------
+  NCT05094336:
+    headline: "AMG 193 — early first-in-human responses; expanding into NSCLC dose expansion"
+    citation: rodon2024
+    orr_pct: 12.8
+    n_evaluable: 39
+    orr_context: "5-type basket"
+    orr_note: "5 / 39 PRs across 5 tumour types (esophageal, pancreatic, renal, gallbladder, ovarian Sertoli-Leydig)"
+    key_findings:
+      - "Partial responses reported in 5 / 39 evaluable patients (esophageal, pancreatic, renal, gallbladder, ovarian Sertoli-Leydig) — Rodon 2024 Ann Oncol."
+      - "Complete tumour SDMA inhibition reported at ≥ 480 mg dose; ctDNA reductions > 90% observed in the 9 partial responders."
+      - "NSCLC dose-expansion cohort: favourable safety with no clinically significant myelosuppression reported to date, vs first-gen PRMT5i; activity reported in NSCLC, PDAC, biliary tract (WCLC 2024 P3.12D.11)."
+      - "MTAP-loss prevalence ~16–20% in squamous NSCLC, ~12–16% in non-squamous; preferential targeting of MTA-bound PRMT5 supported in xenograft models (Belmontes 2025 Cancer Discov)."
+    additional_citations: [belmontes2025, amg193_wclc2024]
+
+  # ------------------------------------------------------------------------
+  # IDE397 + Trodelvy® (sacituzumab govitecan) — urothelial / NSCLC combination
+  # ------------------------------------------------------------------------
+  NCT04794699:
+    headline: "IDE397 monotherapy → expansion + Trodelvy combination in MTAP-deletion urothelial / NSCLC"
+    citation: ide397_aacr2025
+    orr_pct: 57
+    n_evaluable: 7
+    orr_context: "urothelial · DL2 + Trodelvy"
+    orr_note: "57% ORR at DL2 (4/7 in IDE397 + Trodelvy urothelial); 33% at DL1 (3/9). Non-peer-reviewed."
+    key_findings:
+      - "Allosteric MAT2A inhibitor; the proposed mechanism exploits the MTAP-loss-driven metabolic liability to perturb DNA replication and repair (AACR 2025 abstract 4268)."
+      - "Combination expansion with sacituzumab govitecan (Trodelvy) in MTAP-deleted urothelial: ~33% ORR at DL1 (3 / 9), ~57% ORR at DL2 (4 / 7; 3 confirmed PR + 1 unconfirmed PR) — IDEAYA press, Sep 2025; non-peer-reviewed."
+      - "Reported MTAP-deletion prevalence: ~26% in urothelial, ~15% in NSCLC (~48,000 US cases annually by IDEAYA's estimate)."
+      - "Phase 2 monotherapy expansion in MTAP-deletion urothelial / NSCLC ongoing; an H1 2026 conference update was planned."
+    additional_citations: [kalev2021, ide397_press_sep2025]
+
+  # ------------------------------------------------------------------------
+  # TNG908 — Tango Therapeutics (programme discontinued in favour of TNG462)
+  # ------------------------------------------------------------------------
+  NCT05275478:
+    headline: "TNG908 — brain-penetrant MTA-cooperative PRMT5i (enrolment discontinued late 2024)"
+    citation: cottrell2024
+    orr_pct: null
+    n_evaluable: 103
+    orr_note: "n = 103 enrolled by Oct 2024; median TOS ~16 wk; programme discontinued in favour of TNG462"
+    key_findings:
+      - "Reported active and well-tolerated across non-CNS solid tumours and glioblastoma (n=103 enrolled by Oct 2024)."
+      - "Median time on study reported at ~16 weeks at the data cut-off."
+      - "Enrolment stopped to fully resource the follow-on compound TNG462 (vopimetostat)."
+
+  # ------------------------------------------------------------------------
+  # TNG462 (vopimetostat) — Tango Therapeutics lead PRMT5i (monotherapy)
+  # ------------------------------------------------------------------------
+  NCT05732831:
+    headline: "TNG462 (vopimetostat) — monotherapy in MTAP-deleted solid tumours"
+    citation: tng462_clinical_2024
+    orr_pct: 49
+    n_evaluable: null
+    orr_context: "histology-agnostic late-line"
+    orr_note: "~49% ORR histology-agnostic, ~25% in 2L MTAP-del PDAC (OncLive Oct 2025; non-peer-reviewed)"
+    key_findings:
+      - "Positive early dose-escalation and dose-expansion reported; selected as Tango's lead PRMT5i (company release, Nov 2024)."
+      - "Histology-agnostic cohort: ~49% ORR and ~9.1-month median PFS reported in late-line MTAP-deleted cancers (OncLive, Oct 2025; non-peer-reviewed)."
+      - "Second-line MTAP-deleted PDAC: ~25% ORR, ~7.2-month median PFS reported — approximately double historical control (OncLive, Oct 2025; non-peer-reviewed)."
+    additional_citations: [tng462_onclive_2025]
+
+  # ------------------------------------------------------------------------
+  # vopimetostat + RAS(ON) — PDAC combination (June 2026)
+  # ------------------------------------------------------------------------
+  NCT06922591:
+    headline: "Vopimetostat + daraxonrasib — early ~92% ORR in MTAP-del RAS-mut PDAC (June 2026; small n, non-peer-reviewed)"
+    citation: tng462_daraxonrasib_2026
+    orr_pct: 92
+    n_evaluable: 12
+    orr_context: "MTAP-del RAS-mut PDAC"
+    orr_note: "92% ORR (9/11 confirmed) in 12 evaluable MTAP-del RAS-mut PDAC; non-peer-reviewed press"
+    key_findings:
+      - "~92% ORR (9 / 11 confirmed at data cut) in 12 evaluable MTAP-del RAS-mut metastatic PDAC patients — early, single-arm, non-peer-reviewed."
+      - "Reported 100% DCR, 6-month PFS ~90%, median PFS not yet reached."
+      - "KRAS-G12D restricted cohort with vopimetostat + zoldonrasib: ~52% ORR / ~96% DCR / ~74% 6-month PFS — consistent with activity across RAS(ON) partners."
+      - "Reported toxicities grade 1–2; rash / stomatitis / diarrhoea with daraxonrasib pairing; no DLTs reported in zoldonrasib pairing."
+      - "Tango announced intent to advance the vopimetostat + daraxonrasib combination into Phase 3 for first-line MTAP-deleted PDAC."
+
+  # ------------------------------------------------------------------------
+  # GSK3326595 (pemrametostat) — METEOR-1 first-gen SAM-competitive PRMT5i
+  # ------------------------------------------------------------------------
+  NCT02783300:
+    headline: "METEOR-1 — first-gen SAM-competitive GSK3326595 monotherapy (paused programme)"
+    citation: meteor1_ann_oncol_2025
+    orr_pct: null
+    n_evaluable: 288
+    orr_note: "3 PRs (2 ACC, 1 ER+ breast) of 288 treated; programme paused"
+    key_findings:
+      - "288 patients treated across three parts of NCT02783300 (Aug 2016 – Aug 2023; 15 centres in 4 countries)."
+      - "3 confirmed PRs in solid tumours — 2 in adenoid cystic carcinoma (ACC), 1 in ER+ breast cancer."
+      - "Consistent safety / efficacy reported at ESMO 2022 (456MO); Ph1b mono + pembrolizumab combination published Ann Oncol 2025 (METEOR-1)."
+      - "No MTAP-enrichment strategy; broader development since paused."
+
+  # ------------------------------------------------------------------------
+  # JNJ-64619178 — first-gen SAM-competitive PRMT5i
+  # ------------------------------------------------------------------------
+  NCT03573310:
+    headline: "JNJ-64619178 phase 1 — modest ORR, thrombocytopenia DLT (programme paused)"
+    citation: jnj64619178_ccr_2023
+    orr_pct: 5.6
+    n_evaluable: 90
+    orr_context: "solid + NHL"
+    orr_note: "ORR 5.6% (90 evaluable, solid tumours / NHL); thrombocytopenia DLT"
+    key_findings:
+      - "Phase 1 in 90 evaluable patients (solid tumours / NHL); thrombocytopenia identified as the only DLT."
+      - "ORR ~5.6%; signal in adenoid cystic carcinoma."
+      - "Published Clin Cancer Res 2023 (PMID 37417951). Programme has not advanced into MTAP-enrichment."
+
+  # ------------------------------------------------------------------------
+  # AG-270 — first-generation MAT2A inhibitor (now superseded by IDE397)
+  # ------------------------------------------------------------------------
+  NCT03435250:
+    headline: "AG-270 / S095033 phase I — first MAT2A inhibitor in MTAP-deleted patients (programme superseded)"
+    citation: ag270_natcomm_2025
+    orr_pct: 5
+    n_evaluable: 40
+    orr_context: "MTAP-del solid tumours"
+    orr_note: "2 PRs (ORR ~5%) and 5 SD ≥ 4 mo of 40 treated; SAM reduced up to 70%"
+    key_findings:
+      - "40 MTAP-deleted patients treated as single agent (database lock 26 May 2023)."
+      - "Plasma SAM reduced up to ~70% — first-in-human proof of mechanism."
+      - "2 PRs and 5 patients with disease stabilisation ≥ 4 months."
+      - "Common TRAEs: reversible LFT elevation, thrombocytopenia, anaemia, fatigue."
+      - "Published Nature Communications January 2025; subsequent IDE397 (IDEAYA) appears to have superseded AG-270 / S095033."
+
+  # ------------------------------------------------------------------------
+  # PRT811 — Prelude brain-penetrant first-gen PRMT5i
+  # ------------------------------------------------------------------------
+  NCT04089449:
+    headline: "PRT811 — brain-penetrant first-gen PRMT5i (paused; pre-MTA-cooperative era)"
+    citation: prt811_asco_2023
+    orr_pct: null
+    n_evaluable: null
+    orr_note: "Activity reported in IDH-mut glioma + splicing-mut uveal melanoma (ASCO 2023)"
+    key_findings:
+      - "ASCO 2023 (JCO 41:3008): activity reported in IDH-mut recurrent high-grade glioma + splicing-mutant uveal melanoma."
+      - "Common TRAEs grade 1–2 (nausea, vomiting, diarrhoea); no DLTs identified."
+      - "Programme since superseded by next-generation MTA-cooperative compounds with selectivity for MTAP-null cells."
+
+  # ------------------------------------------------------------------------
+  # PRT543 — Prelude PRMT5i in splicing-mutant myeloid malignancies
+  # ------------------------------------------------------------------------
+  NCT03886831:
+    headline: "PRT543 — Ph1b in splicing-factor-mutant myeloid malignancies (programme wound down)"
+    citation: prt543_myeloid_2025
+    orr_pct: null
+    n_evaluable: null
+    orr_note: "Durable responses in splicing-factor-mutant myeloid populations (RP2D 35 mg 5×/wk)"
+    key_findings:
+      - "RP2D identified as 35 mg daily 5×/week; durable responses reported with manageable safety in splicing-factor-mutant myeloid populations."
+      - "Indication-focused on myeloid biology rather than MTAP-loss enrichment; programme has since been wound down."
+
+  # ------------------------------------------------------------------------
+  # BMS-986504 — MountainTAP-30 PDAC Phase 2/3
+  # ------------------------------------------------------------------------
+  NCT07076121:
+    headline: "MountainTAP-30 — Ph2/3 BMS-986504 + nab-pac + gem vs placebo + chemo, 1L MTAP-del PDAC"
+    citation: mountaintap30_tps_jco2026
+    orr_pct: null
+    n_evaluable: null
+    orr_note: "Trial-in-progress (Ph2/3); ASCO GI 2026 TPS abstract, no efficacy data yet"
+    key_findings:
+      - "Randomized phase 2/3 trial-in-progress; first publication is the ASCO GI 2026 TPS abstract (JCO 44(2):TPS796)."
+      - "1L metastatic PDAC with homozygous MTAP deletion; chemo backbone is nab-paclitaxel + gemcitabine."
+      - "Provides a direct comparator for Tango's vopimetostat + daraxonrasib Phase 3 plan in the same indication."

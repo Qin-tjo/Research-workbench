@@ -1,0 +1,115 @@
+# Panel 3 — clinical-stage MTAP-axis drug master.
+# Each entry drives a ClinicalTrials.gov search.  The fetcher uses
+# `search_terms` (any-of) to query the intervention field, then collapses
+# duplicates by NCT id and re-tags each trial with the canonical drug name.
+# `mechanism_class` is used for grouping/colouring in the timeline.
+# `primary_publication` is a citation key from data/citations.yaml.
+
+drugs:
+
+  # --- MTA-cooperative PRMT5 inhibitors ----------------------------------
+  - name:    "BMS-986504"
+    aliases: ["MRTX1719", "navlimetostat"]
+    search_terms: ["BMS-986504", "MRTX1719", "navlimetostat"]
+    sponsor: "Bristol Myers Squibb (acquired from Mirati Therapeutics)"
+    mechanism_class: "MTA-cooperative PRMT5i"
+    primary_publication: "engstrom2023"
+    notes: >
+      Lead MTA-cooperative PRMT5 inhibitor. Phase I/II CA240-0007
+      (formerly MRTX1719-001). ASCO 2025 / AACR 2025 updates.
+
+  - name:    "AMG 193"
+    aliases: ["AMG193"]
+    search_terms: ["AMG 193", "AMG-193", "AMG193"]
+    sponsor: "Amgen"
+    mechanism_class: "MTA-cooperative PRMT5i"
+    primary_publication: "rodon2024"
+    notes: >
+      CNS-penetrant MTA-cooperative PRMT5i. Phase I dose exploration
+      published Ann Oncol 2024 (Rodon et al.).
+
+  - name:    "TNG462"
+    aliases: ["vopimetostat", "TNG-462"]
+    search_terms: ["TNG462", "TNG-462", "vopimetostat"]
+    sponsor: "Tango Therapeutics"
+    mechanism_class: "MTA-cooperative PRMT5i"
+    primary_publication: null    # discovery paper not yet indexed (J Med Chem 2024 PMID pending)
+    notes: >
+      Tango's lead PRMT5 inhibitor; supersedes TNG908. Combinations in
+      development with RAS(ON) inhibitors and osimertinib.
+
+  - name:    "TNG908"
+    aliases: ["TNG-908"]
+    search_terms: ["TNG908", "TNG-908"]
+    sponsor: "Tango Therapeutics"
+    mechanism_class: "MTA-cooperative PRMT5i"
+    primary_publication: "cottrell2024"
+    notes: >
+      Brain-penetrant; enrolment discontinued in late 2024 in favour
+      of TNG462. Historical clinical record retained for completeness.
+
+  # --- MAT2A inhibitors ---------------------------------------------------
+  - name:    "IDE397"
+    aliases: ["IDE-397"]
+    search_terms: ["IDE397", "IDE-397"]
+    sponsor: "IDEAYA Biosciences"
+    mechanism_class: "MAT2A inhibitor"
+    primary_publication: "ide397_aacr2025"
+    notes: >
+      Lead clinical-stage MAT2A inhibitor. Combinations include
+      sacituzumab govitecan (Trodelvy) in MTAP-deleted urothelial / NSCLC.
+
+  - name:    "AG-270"
+    aliases: ["AG270", "S095033"]
+    search_terms: ["AG-270", "AG270", "S095033"]
+    sponsor: "Agios / Servier"
+    mechanism_class: "MAT2A inhibitor"
+    primary_publication: "kalev2021"
+    notes: >
+      First-generation MAT2A inhibitor (Kalev 2021). Largely superseded
+      by IDE397; historical comparator.
+
+  # --- First-generation SAM-competitive PRMT5 inhibitors -----------------
+  - name:    "GSK3326595"
+    aliases: ["pemrametostat", "EPZ015938"]
+    search_terms: ["GSK3326595", "pemrametostat", "EPZ015938"]
+    sponsor: "GlaxoSmithKline (originally Epizyme)"
+    mechanism_class: "First-gen PRMT5i (SAM-competitive)"
+    primary_publication: "stopa2015"
+    notes: >
+      First-in-class SAM-competitive PRMT5 inhibitor. MTAP status
+      not used as enrichment biomarker; broad development paused.
+
+  - name:    "JNJ-64619178"
+    aliases: ["JNJ64619178"]
+    search_terms: ["JNJ-64619178", "JNJ64619178"]
+    sponsor: "Johnson & Johnson / Janssen"
+    mechanism_class: "First-gen PRMT5i (SAM-competitive)"
+    primary_publication: null
+    notes: >
+      Phase I in solid tumours and lymphoma; no MTAP-specific
+      enrichment in original design.
+
+  - name:    "PRT543"
+    aliases: ["PRT-543"]
+    search_terms: ["PRT543", "PRT-543"]
+    sponsor: "Prelude Therapeutics"
+    mechanism_class: "First-gen PRMT5i (SAM-competitive)"
+    primary_publication: null
+    notes: ""
+
+  - name:    "PRT811"
+    aliases: ["PRT-811"]
+    search_terms: ["PRT811", "PRT-811"]
+    sponsor: "Prelude Therapeutics"
+    mechanism_class: "First-gen PRMT5i (SAM-competitive)"
+    primary_publication: null
+    notes: ""
+
+  - name:    "PF-06939999"
+    aliases: ["PF06939999"]
+    search_terms: ["PF-06939999", "PF06939999"]
+    sponsor: "Pfizer"
+    mechanism_class: "First-gen PRMT5i (SAM-competitive)"
+    primary_publication: null
+    notes: ""

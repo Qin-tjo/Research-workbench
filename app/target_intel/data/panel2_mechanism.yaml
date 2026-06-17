@@ -1,0 +1,164 @@
+# Panel 2 — Mechanism & rationale (MTAP / PRMT5 axis).
+#
+# Source of truth for every mechanistic claim in Panel 2.  Citations are
+# keyed to citations.yaml.  Tone: hedged where the data warrants — terms
+# like "appears to", "likely", "is thought to" are used in place of bare
+# assertions where the underlying evidence permits.
+
+panel:    2
+target:   "MTAP"
+title:    "Mechanism & rationale"
+question: "Why might MTAP-deleted cancer be therapeutically actionable?"
+summary:  >
+  9p21 focal deletion typically removes MTAP alongside CDKN2A.  Without
+  MTAP, its substrate MTA likely accumulates and partially inhibits PRMT5,
+  leaving MTAP-null cells dependent on residual PRMT5 activity — an
+  apparent synthetic-lethal window for PRMT5 or upstream MAT2A inhibition.
+
+# -----------------------------------------------------------------------------
+# Mechanism flow — four steps
+# -----------------------------------------------------------------------------
+flow:
+  - id:    1
+    label: "Genomic event"
+    text:  >
+      Focal 9p21.3 homozygous deletion (median ≈ 1.5–2.8 Mb in Figure 3)
+      typically removes MTAP together with CDKN2A.  CDKN2A is generally
+      regarded as the selected tumour suppressor at this locus.  MTAP is
+      most often a co-deleted passenger from the cancer-cell perspective,
+      and the therapeutic handle exploited by MTA-cooperative inhibitors.
+    citations: [taylor2018, zhang2018]
+
+  - id:    2
+    label: "Metabolite accumulation"
+    text:  >
+      MTAP appears to be the only salvage enzyme catabolising
+      methylthioadenosine (MTA, a polyamine-biosynthesis byproduct).
+      MTAP-null cells have been reported to accumulate MTA to high-
+      micromolar levels — roughly 10–100× wild-type in the available
+      models.
+    citations: [kryukov2016, mavrakis2016, marjon2016]
+
+  - id:    3
+    label: "Sub-threshold PRMT5 activity"
+    text:  >
+      MTA structurally resembles the PRMT5 cofactor SAM and engages the
+      same binding pocket; in vitro it has been reported to behave as a
+      partial competitive inhibitor.  Chronic MTA elevation therefore
+      likely lowers PRMT5 catalytic output — including its symmetric
+      dimethylation of Sm splicing factors — to a level that is generally
+      survivable on its own but hyper-sensitive to further inhibition.
+    citations: [kryukov2016, marjon2016, stopa2015, kalev2021]
+
+  - id:    4
+    label: "Synthetic lethality"
+    text:  >
+      MTA-cooperative PRMT5 inhibitors (compounds engineered to
+      preferentially bind the PRMT5–MTA complex), and upstream MAT2A
+      inhibitors which lower the SAM substrate pool, appear to
+      preferentially affect MTAP-null cells.  MTAP-proficient cells
+      retain enough PRMT5 activity to generally tolerate equivalent
+      exposure.  First-generation, MTAP-agnostic PRMT5 inhibitors do not
+      show this selectivity in preclinical models.  The synthetic-lethal
+      window has been reported across multiple preclinical systems and is
+      now being tested clinically.
+    citations: [kryukov2016, marjon2016, mavrakis2016, kalev2021, engstrom2023, belmontes2025]
+
+# -----------------------------------------------------------------------------
+# Biomarker rationale
+# -----------------------------------------------------------------------------
+biomarker:
+  - point: "Homozygous MTAP deletion is currently the most-validated biomarker."
+    detail: >
+      Detectable by standard CNA panels (FoundationOne, MSK-IMPACT).
+      CDKN2A co-deletion appears to be a near-universal surrogate
+      (Figure 4: ~88–100% across cohorts), but is one step removed from
+      the addressable metabolic phenotype.
+    citations: [taylor2018]
+
+  - point: "Heterozygous loss likely does not qualify."
+    detail: >
+      MTA accumulation is generally thought to require complete MTAP loss;
+      Figure 3 also indicates that heterozygous events are mostly
+      arm-level passenger losses rather than focal driver events.
+    citations: [kryukov2016]
+
+  - point: "MTA itself may serve as a pharmacodynamic readout."
+    detail: >
+      MTA elevation in plasma and tissue has been reported as an enrolment
+      biomarker and an on-treatment PD marker (especially relevant for
+      MAT2A inhibition).
+    citations: [marjon2016, kalev2021]
+
+  - point: "MTAP loss is over-represented in oncogene-driven NSCLC."
+    detail: >
+      Aldea 2026 reports ~27–33% in ALK-rearranged, ~18–26% in
+      RET-rearranged, and ~17–24% in EGFR-mutant NSCLC — with CDKN2A
+      co-deletion in ~98%.  These observations suggest that
+      MTA-cooperative PRMT5 inhibition combined with driver-TKI may be
+      worth testing in those subsets.
+    citations: [aldea2026]
+
+# -----------------------------------------------------------------------------
+# Therapeutic-strategy classes (specific clinical compounds → Section 3)
+# -----------------------------------------------------------------------------
+strategies:
+  - class:     "First-gen SAM-competitive PRMT5 inhibitors"
+    rationale: >
+      Pan-PRMT5 inhibitors that do not preferentially engage the MTAP-null
+      context.  Their therapeutic window has appeared narrow because
+      MTAP-proficient cells are similarly inhibited at clinically achievable
+      doses.
+    citations: [stopa2015]
+
+  - class:     "MTA-cooperative PRMT5 inhibitors"
+    rationale: >
+      Designed to preferentially bind the PRMT5–MTA complex, so MTAP-null
+      cells (with elevated MTA) should be selectively engaged while
+      wild-type cells are relatively spared.  Clinical-stage examples
+      include MRTX1719 / BMS-986504 (Mirati / BMS), AMG 193 (Amgen), and
+      TNG908 / TNG462 (Tango); first patient responses have been reported
+      across multiple MTAP-deleted histologies in 2023–2026.
+    citations: [kryukov2016, marjon2016, engstrom2023, belmontes2025,
+                rodon2024, cottrell2024, bms986504_asco2025,
+                bms986504_aacr2025, lin2023_commentary]
+
+  - class:     "MAT2A inhibitors (upstream)"
+    rationale: >
+      Designed to lower the cellular SAM pool, likely deepening PRMT5
+      inhibition in MTAP-null cells.  IDE397 (IDEAYA) is currently the lead
+      clinical-stage example, with reported combination activity with
+      sacituzumab govitecan in MTAP-deleted urothelial cancer.
+    citations: [marjon2016, kalev2021, ide397_aacr2025]
+
+# -----------------------------------------------------------------------------
+# Acknowledged uncertainties
+# -----------------------------------------------------------------------------
+uncertainties:
+  - text: >
+      MTA accumulation appears to be cell-context dependent — not every
+      MTAP-null tumour is likely to reach the same MTA threshold, and
+      intratumoural CDKN2A / MTAP heterogeneity can probably dilute the
+      biomarker call.
+    citations: [kryukov2016]
+  - text: >
+      Panel-based NGS appears to under-detect MTAP loss relative to
+      orthogonal methods.  In matched-sample comparisons, MTAP IHC reports
+      a higher MTAP-deficiency prevalence than panel NGS in NSCLC (~18% vs
+      ~6%, Brune 2026 JTO) and is more sensitive than panel NGS for MTAP
+      loss in pleural mesothelioma (Febres-Aldana 2024 Modern Pathology).
+      The MSK-IMPACT vs whole-exome ABSOLUTE rate difference observed in
+      Figure 1 (~5–18× lower in the panel cohort) is consistent with this
+      pattern but is confounded by cohort-level differences in purity and
+      stage, so should not be over-interpreted in isolation.  Practical
+      implication: companion-diagnostic strategies that pair panel NGS with
+      orthogonal IHC (or FISH) are likely more robust than panel NGS alone.
+    citations: [brune2026_mtap_ihc, febres_aldana_2024_mtap_meso]
+  - text: >
+      Acquired resistance to MTA-cooperative PRMT5 inhibition has been
+      reported in preclinical models, with resistant clones showing
+      collateral MEK-inhibitor sensitivity.  A lineage-agnostic splicing
+      signature following PRMT5 inhibition has also been proposed as a
+      potential pharmacodynamic biomarker.  Clinical resistance evidence
+      remains to be published.
+    citations: [prmt5i_resistance_biorxiv_2026, prmt5i_splicing_biorxiv_2026]

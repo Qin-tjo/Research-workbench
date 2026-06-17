@@ -1,0 +1,39 @@
+[project]
+name = "oncolit"
+version = "0.1.0"
+description = "Oncology literature search & summary engine — a Claude Code skill"
+requires-python = ">=3.9"
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "ruff>=0.4",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+# UP (pyupgrade) is intentionally excluded: the project targets Python 3.9, where
+# pep604 (`X | None`) annotations break Pydantic at runtime, so we keep typing.Optional/List.
+select = ["E", "F", "I", "B"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]

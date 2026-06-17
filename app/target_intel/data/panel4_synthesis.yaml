@@ -1,0 +1,295 @@
+# Panel 4 — Synthesis / thesis for the MTAP / PRMT5 axis.
+#
+# Synthesises Figures 1–4 plus the Section 3 trial table into an actionable narrative.
+# Every claim is back-linked to a Figure or to a citation key in citations.yaml.
+# Tone: hedged.  Confidence is acknowledged where the data warrants, and
+# uncertainty is preserved where it does.  Numeric values are observations,
+# not declarations.
+
+panel:    4
+target:   "MTAP"
+title:    "Synthesis & thesis"
+question: "Taking Figures 1–4 and the Section 3 trial table together, what does the current MTAP / PRMT5 landscape suggest, and what are the most defensible next steps?"
+
+# -----------------------------------------------------------------------------
+# Headline thesis
+# -----------------------------------------------------------------------------
+thesis:
+  text: >
+    The MTAP / PRMT5 axis appears to have moved from a 2016
+    synthetic-lethality concept into a clinical platform now entering its
+    first pivotal trials.  The question is no longer whether
+    MTA-cooperative PRMT5 inhibition is active in MTAP-null disease — Rodon
+    2024, Engstrom 2023 and Belmontes 2025 are broadly supportive of that
+    view — but in which patient populations, with which combination
+    partners, and with what biomarker calling, durable responses are likely.
+    The early ~92% ORR reported for vopimetostat + daraxonrasib in
+    MTAP-deleted RAS-mutant PDAC (Tango, June 2026; n = 12 evaluable,
+    single-arm, non-peer-reviewed) is among the most encouraging signals
+    released so far; if it holds up in larger and peer-reviewed reporting,
+    it would reposition PDAC as a leading near-term opportunity for the
+    axis.  Pivotal Phase 2/3 readouts (MountainTAP-30 in PDAC; planned
+    vopimetostat + daraxonrasib Ph3) are the next inflection point.
+  citations: [kryukov2016, mavrakis2016, marjon2016, rodon2024, engstrom2023,
+              belmontes2025, tng462_daraxonrasib_2026, mountaintap30_tps_jco2026]
+
+# -----------------------------------------------------------------------------
+# Patient-selection strategy
+# -----------------------------------------------------------------------------
+patient_selection:
+  - point: "Homozygous MTAP deletion is currently the most defensible enrolment biomarker; heterozygous loss likely does not qualify."
+    detail: >
+      Figure 1 indicates that MTAP homdel is most prevalent in GBM (~43%),
+      MESO (~36%), BLCA (~23%), PAAD (~21%), ESCA (~18%), LUSC (~16%), SKCM
+      (~14%) and HNSC (~11%).  Figure 3 suggests these focal homdel events
+      (median footprint ≈ 1.5–2.8 Mb, < 3% arm-level) are mechanistically
+      distinct from heterozygous loss, which is predominantly arm-level
+      passenger (median 25–115 Mb, 56–86% arm-level).  The mechanistic
+      consequence — MTA accumulation sufficient to partially inhibit PRMT5 —
+      is generally expected to require complete MTAP loss, so heterozygous
+      events would not normally be expected to qualify a patient.
+    refs:
+      panels: ["Figure 1", "Figure 3"]
+      citations: [kryukov2016]
+
+  - point: "Companion diagnostics for MTAP loss likely need orthogonal confirmation, not panel NGS alone."
+    detail: >
+      Two head-to-head method comparisons in matched samples support the
+      view that panel-based NGS can under-detect MTAP loss relative to
+      MTAP IHC and FISH.  In NSCLC, Brune et al. (J Thorac Oncol 2026)
+      reported MTAP deficiency in ~18% of cases by IHC versus the
+      ~6% rate captured by the OPA-NGS panel they tested; the authors
+      attributed the gap to MTAP lacking dedicated probe coverage in the
+      panel and concluded that IHC was better suited than OPA-NGS for
+      assessing MTAP status.  In pleural mesothelioma, Febres-Aldana et
+      al. (Modern Pathology 2024) similarly reported higher sensitivity
+      for IHC than for panel-NGS, with FISH used as the gold standard
+      and the discrepancies attributed mainly to low tumour purity and
+      to the difficulty of calling focal CN events from panel read
+      depth.  Caveat — these studies report panel-vs-IHC comparisons in
+      curated research cohorts; the cross-platform pattern observed in
+      Figure 1 (~5–18× lower homdel rates in MSK-IMPACT panel versus
+      whole-exome ABSOLUTE) is directionally consistent with this view
+      but is confounded by purity / stage differences between cohorts,
+      so does not by itself prove an enrolment-level under-detection
+      effect.  Practical implication: a tier-2 IHC (or FISH) confirmation
+      on panel-NGS-negative cases would likely reduce the false-negative
+      rate in MTAP-targeted trials.
+    refs:
+      citations: [brune2026_mtap_ihc, febres_aldana_2024_mtap_meso]
+
+  - point: "CDKN2A is essentially always co-deleted with MTAP, but the dependency is MTAP-specific."
+    detail: >
+      Figure 4 indicates that CDKN2A is co-deleted in ~88–100% of
+      MTAP-homdel patients across cohorts with at least 5 deleted patients,
+      together with the focal 9p21 neighbourhood (IFN cluster, ELAVL2).
+      The metabolic phenotype that drives PRMT5 / MAT2A dependency is
+      specific to loss of MTAP enzymatic activity, so MTAP status should
+      be the primary biomarker for trial enrolment.  CDKN2A status remains
+      a useful confirmatory readout where direct MTAP testing is
+      unavailable.
+    refs:
+      panels: ["Figure 4"]
+      citations: [zhang2018, brune2026_mtap_ihc]
+
+  - point: "Oncogene-driven NSCLC subsets appear under-appreciated for MTAP enrichment."
+    detail: >
+      Aldea 2026 reports MTAP loss in ~27–33% of ALK-rearranged, ~18–26% of
+      RET-rearranged, and ~17–24% of EGFR-mutant NSCLC — substantially
+      higher than the pan-cohort NSCLC figures in Figure 1 (~10% LUAD,
+      ~16% LUSC).  In EGFR/ALK preclinical models the authors report that
+      driver-TKI plus MTA-cooperative PRMT5 inhibition (BMS-986504) may
+      outperform either agent alone, which — if it holds in patients —
+      could define a distinct clinical-development lane.
+    refs:
+      citations: [aldea2026]
+
+# -----------------------------------------------------------------------------
+# Combination-therapy logic
+# -----------------------------------------------------------------------------
+combinations:
+  - indication: "Pancreatic adenocarcinoma (PDAC)"
+    mtap_prev_tcga: "~21%"
+    leading_strategies:
+      - "Vopimetostat (TNG462) + daraxonrasib (RAS(ON) multi-selective) → ~92% ORR in 12 MTAP-del RAS-mut patients (June 2026, single-arm, non-peer-reviewed)."
+      - "BMS-986504 + nab-paclitaxel + gemcitabine (MountainTAP-30, Ph2/3) — ASCO GI 2026 TPS."
+    rationale: >
+      The per-cohort mutational data behind Section 3 indicate that the
+      MTAP-homdel PAAD population is relatively uniform (KRAS ~85%, TP53
+      ~70%, SMAD4 ~30%), and the MTAP-homdel profile largely mirrors the
+      cohort baseline.  Combinations that target KRAS or that ride a
+      chemotherapy backbone therefore appear to double-target the dominant
+      biology rather than introduce new mechanistic risk.
+    refs:
+      panels: ["Figure 1"]
+      citations: [tng462_daraxonrasib_2026, mountaintap30_tps_jco2026]
+
+  - indication: "Non-small cell lung cancer (NSCLC)"
+    mtap_prev_tcga: "~10% LUAD · ~16% LUSC (TCGA primary); ~17–33% in ALK/RET/EGFR-driven subsets"
+    leading_strategies:
+      - "BMS-986504 + pembrolizumab + chemo, 1L MTAP-del NSCLC (NCT07063745, Ph2/3)."
+      - "MTA-cooperative PRMT5i + driver-TKI for oncogene-addicted NSCLC (preclinical rationale, Aldea 2026)."
+      - "AMG 193 dose-expansion in MTAP-del NSCLC (WCLC 2024 P3.12D.11)."
+    rationale: >
+      The per-cohort mutational data behind Section 3 show MTAP-homdel
+      NSCLC patients have a heterogeneous driver profile (TP53, EGFR in
+      LUAD; KMT2D, PIK3CA, NFE2L2 in LUSC).  The oncogene-driven subsets
+      identified by Aldea 2026 are MTAP-enriched and pair naturally with
+      established TKIs, which makes driver-TKI combinations a reasonable
+      next-step hypothesis even though clinical validation in those
+      subsets is still early.
+    refs:
+      panels: ["Figure 1"]
+      citations: [aldea2026, amg193_wclc2024]
+
+  - indication: "Urothelial carcinoma"
+    mtap_prev_tcga: "~23% (TCGA-BLCA primary tumour)"
+    leading_strategies:
+      - "IDE397 + sacituzumab govitecan (Trodelvy®): ~33% → ~57% ORR (DL1 → DL2) in MTAP-del urothelial (IDEAYA Sep 2025, press release)."
+      - "BMS-986504 monotherapy and combinations in MTAP-del urothelial cohorts."
+    rationale: >
+      Urothelial sits ~3rd by homdel frequency in Figure 1, and the
+      per-cohort mutational data behind Section 3 indicate the MTAP-del
+      subset is enriched for FGFR3 / TP53 / KMT2D — a
+      profile where a Trop-2 ADC backbone (sacituzumab govitecan) is already
+      standard of care and so provides a relatively low-friction combination
+      partner.  Numerical readouts to date are early-phase and small-n; cite
+      cautiously.
+    refs:
+      panels: ["Figure 1"]
+      citations: [ide397_aacr2025, ide397_press_sep2025]
+
+  - indication: "Mesothelioma / GBM"
+    mtap_prev_tcga: "~36% MESO · ~43% GBM"
+    leading_strategies:
+      - "BMS-986504 monotherapy in MTAP-del mesothelioma (recruiting Ph2)."
+      - "TNG908 (brain-penetrant; enrolment discontinued in favour of TNG462) and BMS-986504 in MTAP-del GBM."
+    rationale: >
+      Both indications have the highest MTAP homdel rates in Figure 1 and
+      limited effective standard-of-care.  the per-cohort mutational data behind Section 3 suggest the MTAP-del
+      MESO subset is BAP1 / NF2-driven with low TMB, so monotherapy remains
+      a credible hypothesis there.  GBM carries the additional challenge of
+      CNS penetrance, where TNG908 was originally positioned; BMS-986504 has
+      also reported CNS-penetrant activity in early data.
+    refs:
+      panels: ["Figure 1"]
+      citations: [cottrell2024, belmontes2025]
+
+# -----------------------------------------------------------------------------
+# Competitive landscape & near-term catalysts
+# -----------------------------------------------------------------------------
+competitive:
+  programs:
+    - sponsor:   "Bristol Myers Squibb"
+      drug:      "BMS-986504 (navlimetostat / MRTX1719)"
+      position:  "Currently the most-advanced programme; ~16 trials including two Ph2/3."
+      catalysts: "MountainTAP-30 PDAC primary readouts (expected 2027–2028); NSCLC 1L pembro+chemo Ph2/3 readouts; ongoing CA240-0007 expansions."
+
+    - sponsor:   "Tango Therapeutics"
+      drug:      "TNG462 (vopimetostat)"
+      position:  "Differentiated by RAS(ON) co-development partnership (Revolution Medicines)."
+      catalysts: "Planned Phase 3 vopimetostat + daraxonrasib in 1L MTAP-del PDAC; osimertinib + vopimetostat NSCLC combo in development."
+
+    - sponsor:   "Amgen"
+      drug:      "AMG 193"
+      position:  "First-in-human responses reported across multiple tumour types; NSCLC dose expansion."
+      catalysts: "Expanded NSCLC and biliary-tract data; ongoing PARP and chemo combinations."
+
+    - sponsor:   "IDEAYA Biosciences"
+      drug:      "IDE397 (MAT2A inhibitor)"
+      position:  "Currently the leading clinical-stage MAT2A programme (AG-270 superseded); differentiated mechanism; Trodelvy combination strategy."
+      catalysts: "H1 2026 conference update on combination expansion (urothelial / NSCLC); RP2D selection."
+
+# -----------------------------------------------------------------------------
+# Risks & open questions
+# -----------------------------------------------------------------------------
+risks:
+  - point: "Acquired resistance has been reported in preclinical MTAP-null models — clinical translation is unknown."
+    detail: >
+      An April 2026 bioRxiv preprint describes mechanisms of acquired resistance
+      to MTA-cooperative PRMT5 inhibition in MTAP-null NSCLC, with resistant
+      clones showing collateral MEK-inhibitor sensitivity.  These observations
+      are preclinical and not yet peer-reviewed; clinical resistance data
+      remain to be published.  Resistance-mapping work likely needs to run in
+      parallel with Phase 3 readouts.
+    citations: [prmt5i_resistance_biorxiv_2026]
+
+  - point: "Panel-based NGS may under-detect MTAP loss in trial-enrolment populations."
+    detail: >
+      In matched-sample method comparisons, MTAP IHC has reported higher
+      sensitivity than commercial panel NGS for MTAP loss.  Brune et al.
+      (J Thorac Oncol 2026) found MTAP deficiency by IHC in ~18 % of NSCLC
+      samples, while the OPA-NGS panel they tested detected only ~6 %.
+      The authors attributed the gap to limited MTAP probe coverage on the
+      panel.  Febres-Aldana et al. (Modern Pathology 2024) reported a
+      similar IHC > panel-NGS sensitivity pattern in pleural mesothelioma,
+      with FISH as the reference standard.  Companion diagnostics for
+      MTA-cooperative PRMT5i trials would likely benefit from orthogonal
+      confirmation (MTAP IHC, FISH where available, MTA mass-spec for
+      pharmacodynamic monitoring) alongside panel CN calling.
+    citations: [brune2026_mtap_ihc, febres_aldana_2024_mtap_meso]
+
+  - point: "Several expected co-driver mutations show mutual exclusivity with MTAP homdel."
+    detail: >
+      An exploratory per-cohort Fisher analysis (held in the audit trail)
+      indicates that TP53, RB1, and CDKN2A point-mutations are
+      systematically mutually exclusive with MTAP-homdel.  This pattern
+      is consistent with these alterations representing alternative
+      mechanisms for p53 / RB / cell-cycle inactivation.  IDH1 mutation
+      is mutually exclusive with MTAP-homdel in LGG; the IDH-mutant
+      glioma branch is a genomically distinct disease from the
+      IDH-wild-type / 9p21-deleted branch.  Trial designs that assume
+      MTAP-del × TP53-mut co-occurrence may overestimate the eligible
+      population.  The reliable co-occurrences with MTAP loss are
+      copy-number events: CDKN2A / CDKN2B / 9p21 neighbours.
+    refs:
+      panels: ["Figure 4"]
+
+  - point: "Activity differentiation between MTA-cooperative PRMT5i and MAT2A inhibition is unresolved."
+    detail: >
+      Kalev 2021 supports a mechanistic distinction: MAT2A inhibition
+      reduces SAM and would be expected to deepen PRMT5 suppression in
+      MTAP-null cells.  No head-to-head clinical trial currently exists.
+      IDE397 + Trodelvy (urothelial) and BMS-986504 monotherapy have each
+      reported response signals in their respective settings; the data
+      are not directly comparable across these programmes because they
+      differ in indication, in combination vs monotherapy, and in sample
+      size and peer-review status.  The question of whether MAT2A
+      inhibition delivers a meaningfully different therapeutic window —
+      and whether it complements or substitutes for MTA-cooperative
+      PRMT5 inhibition — is likely to remain open until a head-to-head
+      or sequential design is run.
+    citations: [kalev2021]
+
+# -----------------------------------------------------------------------------
+# Concrete next steps for a translational team
+# -----------------------------------------------------------------------------
+next_steps:
+  - action: "Consider a two-tier companion-diagnostic strategy: panel CN as eligibility screen, MTAP IHC as confirmatory."
+    why: >
+      Matched-sample comparisons (Brune 2026 in NSCLC; Febres-Aldana 2024
+      in mesothelioma) indicate that MTAP IHC has higher sensitivity for
+      MTAP loss than commercial panel NGS.  Pairing panel CN with IHC
+      reduces the panel-NGS false-negative rate and is resilient to
+      MTAP probe-coverage gaps on individual commercial panels.
+
+  - action: "Prioritise PDAC and oncogene-driven NSCLC for new programme investment."
+    why: >
+      Two opportunities currently stand out.  (1) PDAC has the largest
+      reported response signal to date: vopimetostat + daraxonrasib
+      reported ~92 % ORR in 12 evaluable MTAP-del RAS-mut patients
+      (Tango, June 2026; single-arm, non-peer-reviewed).  (2) Oncogene-
+      driven NSCLC subsets carry MTAP loss at higher rates than pan-NSCLC
+      (Aldea 2026: ~17–33 % across ALK / RET / EGFR-rearranged disease)
+      and pair naturally with established TKIs, defining a distinct
+      combination-therapy lane.
+    citations: [brune2026_mtap_ihc, febres_aldana_2024_mtap_meso, tng462_daraxonrasib_2026, aldea2026]
+
+  - action: "Build resistance / biomarker-evolution mapping in parallel with Phase 3."
+    why: >
+      Pre-clinical resistance signals (April 2026 bioRxiv preprint) and a
+      lineage-agnostic splicing signature following PRMT5 inhibition (March
+      2026 bioRxiv preprint) suggest that PD biomarkers and resistance
+      mapping would best be designed into Phase 3 from the outset rather
+      than retro-fitted after readout.
+    citations: [prmt5i_resistance_biorxiv_2026, prmt5i_splicing_biorxiv_2026]
