@@ -1539,7 +1539,6 @@ html <- glue('
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0F6E56">
-<script>document.documentElement.classList.add("js");</script>
 <meta name="description" content="MTAP / PRMT5 target-intelligence dashboard — genomic landscape, mechanism, clinical landscape, and synthesis. Built from TCGA ABSOLUTE + recount3 + MC3 + ClinicalTrials.gov.">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="MTAP / PRMT5 axis: prevalence across 33 TCGA cohorts, focality of 9p21 deletions, co-deletion partners, clinical trial landscape, and synthesis. All claims cited.">
