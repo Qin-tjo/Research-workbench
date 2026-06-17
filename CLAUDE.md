@@ -50,13 +50,13 @@ recount3, MC3, ClinicalTrials.gov, and MSK-IMPACT data. Currently built around M
 
 **To regenerate the dashboard:**
 ```bash
-Rscript app/target_intel/R/12_render_dashboard.R
+Rscript app/target_intel/R/07_render_dashboard.R
 # Output: app/target_intel/results/target_intel_dashboard.html
 # Public copy: app/target_intel/public/index.html (manually cp after render)
 ```
 
 **Key directories:**
-- `app/target_intel/R/` — numbered pipeline scripts (00–12) + utils/
+- `app/target_intel/R/` — numbered pipeline scripts (00–07) + utils/
 - `app/target_intel/data/` — YAML source-of-truth files for all scientific content:
   - `citations.yaml` — 36 primary citations with stable URLs
   - `panel2_mechanism.yaml` — MTAP/PRMT5 mechanism flow + uncertainties

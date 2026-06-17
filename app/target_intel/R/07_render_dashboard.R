@@ -15,7 +15,7 @@ suppressPackageStartupMessages({
 SCRIPT_DIR <- "/Users/qintjo/Documents/Research-workbench/app/target_intel/R"
 source(file.path(SCRIPT_DIR, "00_config.R"))
 
-DATA_DIR <- "/Users/qintjo/Documents/Research-workbench/app/target_intel/data"
+DATA_DIR <- fs::path(ROOT, "data")
 cit  <- yaml::read_yaml(fs::path(DATA_DIR, "citations.yaml"))
 p2   <- yaml::read_yaml(fs::path(DATA_DIR, "panel2_mechanism.yaml"))
 p3d  <- yaml::read_yaml(fs::path(DATA_DIR, "panel3_drugs.yaml"))$drugs

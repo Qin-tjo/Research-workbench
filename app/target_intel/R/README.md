@@ -3,7 +3,7 @@
 ## Entry point
 
 ```bash
-Rscript app/target_intel/R/12_render_dashboard.R
+Rscript app/target_intel/R/07_render_dashboard.R
 # Output: app/target_intel/results/target_intel_dashboard.html
 ```
 
@@ -12,17 +12,17 @@ Rscript app/target_intel/R/12_render_dashboard.R
 | Script | Purpose |
 |---|---|
 | `00_config.R` | Gene symbol, paths, shared constants — sourced by all scripts |
-| `01_fetch_tcga.R` | One-time TCGA pull → cached parquet (ABSOLUTE CN, RNA-seq TPM, metadata) |
+| `01_fetch_tcga.R` | One-time TCGA pull → cached parquet (ABSOLUTE CN, metadata) |
+| `01b_fetch_rnaseq.R` | recount3 RNA-seq fetch → parquet |
+| `01c_fetch_maf.R` | MC3 public MAF fetch → parquet |
 | `02_absolute_codel.R` | MTAP homdel/hetdel frequency per TCGA cohort (ABSOLUTE-corrected) |
-| `02b_fetch_rnaseq.R` | recount3 RNA-seq fetch → parquet |
 | `03_cn_expression.R` | CN → expression fidelity per cohort (log2 TPM+1 vs ABSOLUTE CN bin) |
-| `03b_fetch_maf.R` | MC3 public MAF fetch → parquet |
 | `04_cooccurrence.R` | Co-occurrence / mutual exclusivity across driver genes |
 | `04a_codeletion.R` | 9p21.3 co-deletion partners in MTAP-homdel patients |
 | `04b_mtap_pop_mutations.R` | Mutational landscape of MTAP-homdel patients per cohort |
 | `05_chrom_context.R` | Deletion focality (focal vs arm-level) at 9p21.3 |
 | `06_validation_msk.R` | MSK-IMPACT cross-cohort validation via cBioPortal |
-| `12_render_dashboard.R` | Assembles all parquets + YAML data files → single-page HTML dashboard |
+| `07_render_dashboard.R` | Assembles all parquets + YAML data files → single-page HTML dashboard |
 | `install_deps.R` | One-time R package installation |
 | `qc_check.R` | QC diagnostics — run after data fetch to verify sample counts |
 | `utils/audit.R` | Writes provenance rows to `results/audit.parquet` |
@@ -31,14 +31,15 @@ Rscript app/target_intel/R/12_render_dashboard.R
 ## Data flow
 
 ```
-01–06 (fetch + analysis scripts)
-  → results/*.parquet  +  data/*.yaml (hand-curated content)
-    → 12_render_dashboard.R
+01, 01b, 01c  (fetch scripts — run once, output cached parquets)
+02–06         (analysis scripts — read cache, write results/*.parquet)
+  → results/*.parquet  +  data/*.yaml (hand-curated scientific content)
+    → 07_render_dashboard.R
       → results/target_intel_dashboard.html
 ```
 
 Scripts 01–06 only need to be re-run if the underlying data changes.
-`12_render_dashboard.R` re-reads parquets + YAML each time and is fast (~30 s).
+`07_render_dashboard.R` re-reads parquets + YAML each time and is fast (~30 s).
 
 ## Key conventions
 
