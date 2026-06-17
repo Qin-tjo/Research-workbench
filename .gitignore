@@ -19,6 +19,9 @@ runs/
 app/target_intel/cache/
 app/*/cache/
 
+# Public dashboard copy — managed in the separate mtap-intel repo
+app/target_intel/public/
+
 # Claude Code per-task plan scratch space
 .claude/plans/
 .claude/settings.local.json
